@@ -16,3 +16,7 @@ map("i", "C-b", "<ESC>^i", {})
 map("i", "C-e", "<End>", {})
 
 map("n", "C-c", "<cmd> %y+ <CR>", {})
+
+map("n", ",rc", "<cmd> -1read $HOME/Programming/snippets/react-component.tsx<CR>4V=fC", {
+  noremap = true,
+})

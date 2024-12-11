@@ -1,9 +1,9 @@
 return {
   {
     "catppuccin/nvim",
-    lazy = false,
+    -- lazy = false,
     name = "catppuccin",
-    priority = 1000,
+    -- priority = 1000,
     opts = {
       transparent_background = false,
     },
@@ -11,7 +11,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    lazy = false,
+    -- lazy = false,
     opts = {
       neotree = true,
       cmp = true,
@@ -49,6 +49,42 @@ return {
       -- Optionally configure and load the colorscheme
       -- directly inside the plugin declaration.
       vim.g.edge_enable_italic = true
+    end,
+  },
+  {
+    "hardhackerlabs/theme-vim",
+    name = "hardhacker",
+    -- lazy = false,
+    -- priority = 1000,
+    config = function()
+      vim.g.hardhacker_hide_tilde = 1
+      vim.g.hardhacker_keyword_italic = 1
+      vim.g.hardhacker_transparent_background = 1
+    end,
+  },
+  {
+    "Yazeed1s/oh-lucy.nvim",
+    -- lazy = false,
+    -- priority = 1000,
+    config = function()
+      vim.g.oh_lucy_transparent_background = true
+      vim.g.oh_lucy_evening_transparent_background = true
+    end,
+  },
+  {
+    "ramojus/mellifluous.nvim",
+    -- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
+    config = function()
+      require("mellifluous").setup({}) -- optional, see configuration section.
+      -- vim.cmd("colorscheme mellifluous")
+    end,
+  },
+  {
+    "vague2k/vague.nvim",
+    config = function()
+      require("vague").setup({
+        transparent = true,
+      })
     end,
   },
 }
