@@ -15,8 +15,21 @@ map("i", "C-h", "<Left>", {})
 map("i", "C-b", "<ESC>^i", {})
 map("i", "C-e", "<End>", {})
 
-map("n", "C-c", "<cmd> %y+ <CR>", {})
+map("n", "<C-c>", "<cmd> %y+ <CR>", {})
 
-map("n", ",rc", "<cmd> -1read $HOME/Programming/snippets/react-component.tsx<CR>4V=fC", {
-  noremap = true,
-})
+local transformWordsToCameCase = [[s/[-_]\([a-z]\)/\U\1/g]]
+-- Custom snippets
+map(
+  "n",
+  ",rc",
+  '<cmd> -1read $HOME/Programming/snippets/react-component.tsx<CR>4V=fC:let @+ = expand("%:t")<CR>viwpldF.b~:'
+    .. transformWordsToCameCase
+    .. "<CR>",
+  {
+    noremap = true,
+  }
+)
+
+local opt = vim.opt
+
+opt.spelllang = { "en", "pt" }

@@ -1,11 +1,7 @@
-return {
-  {
-    "folke/snacks.nvim",
-    opts = {
-      dashboard = {
-        preset = {
-          header = {
-            [[
+local dashboard_config = {
+  preset = {
+    header = {
+      [[
 
 
      ███▄    █     ▒█████      ██▓    ▄████▄     ▓█████   
@@ -18,32 +14,48 @@ return {
        ░   ░ ░    ░ ░ ░ ▒      ▒ ░   ░              ░     
              ░        ░ ░      ░     ░ ░            ░  ░  
                                      ░                    ]],
-          },
-        },
-
-        sections = {
-          -- {
-          --   pane = 2,
-          --   section = "terminal",
-          --   cmd = "pokemon-colorscripts -r --no-title; sleep .1",
-          --   height = 30,
-          --   random = 10,
-          --   indent = 4,
-          -- },
-          {
-            pane = 1,
-            { section = "header" },
-            { section = "keys", gap = 1, padding = 1 },
-            { section = "startup" },
-          },
-          -- {
-          --   pane = 2,
-          --   section = "keys",
-          --   gap = 1,
-          --   padding = 1,
-          -- },
-        },
+    },
+    keys = {
+      {
+        icon = " ",
+        key = "c",
+        desc = "Config",
+        action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
       },
+      { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+      { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+    },
+  },
+
+  sections = {
+    -- {
+    --   pane = 2,
+    --   section = "terminal",
+    --   cmd = "pokemon-colorscripts -r --no-title; sleep .1",
+    --   height = 30,
+    --   random = 10,
+    --   indent = 4,
+    -- },
+    {
+      pane = 1,
+      { section = "header" },
+      { section = "keys", gap = 1, padding = 1 },
+      { section = "startup" },
+    },
+    -- {
+    --   pane = 2,
+    --   section = "keys",
+    --   gap = 1,
+    --   padding = 1,
+    -- },
+  },
+}
+
+return {
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = dashboard_config,
     },
   },
   {
