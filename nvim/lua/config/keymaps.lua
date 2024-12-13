@@ -33,3 +33,4 @@ map(
 local opt = vim.opt
 
 opt.spelllang = { "en", "pt" }
+opt.cursorline = false
