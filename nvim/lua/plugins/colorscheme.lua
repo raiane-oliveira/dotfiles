@@ -1,3 +1,5 @@
+local transparency = true
+
 return {
   {
     "catppuccin/nvim",
@@ -5,7 +7,7 @@ return {
     name = "catppuccin",
     -- priority = 1000,
     opts = {
-      transparent_background = false,
+      transparent_background = transparency,
     },
   },
   {
@@ -29,7 +31,7 @@ return {
         migrations = false,
       },
       styles = {
-        transparency = true,
+        transparency = transparency,
         italic = false,
       },
     },
@@ -41,7 +43,7 @@ return {
     config = function()
       vim.g.mellow_italic_functions = true
       vim.g.mellow_bold_functions = true
-      vim.g.mellow_transparent = true
+      vim.g.mellow_transparent = transparency
       vim.g.mellow_highlight_overrides = {
         ["NormalNC"] = { link = "Normal" },
       }
@@ -59,7 +61,12 @@ return {
     config = function()
       vim.g.hardhacker_hide_tilde = 1
       vim.g.hardhacker_keyword_italic = 1
-      vim.g.hardhacker_transparent_background = 1
+
+      if transparency then
+        vim.g.hardhacker_transparent_background = 1
+      else
+        vim.g.hardhacker_transparent_background = 0
+      end
     end,
   },
   {
@@ -67,8 +74,8 @@ return {
     -- lazy = false,
     -- priority = 1000,
     config = function()
-      vim.g.oh_lucy_transparent_background = true
-      vim.g.oh_lucy_evening_transparent_background = true
+      vim.g.oh_lucy_transparent_background = transparency
+      vim.g.oh_lucy_evening_transparent_background = transparency
     end,
   },
   {
@@ -78,7 +85,7 @@ return {
       require("mellifluous").setup({
         colorset = "mountain",
         transparent_background = {
-          enabled = true,
+          enabled = transparency,
           telescope = false,
         },
       })
@@ -88,7 +95,7 @@ return {
     "vague2k/vague.nvim",
     config = function()
       require("vague").setup({
-        transparent = true,
+        transparent = transparency,
       })
     end,
   },
