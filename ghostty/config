@@ -6,6 +6,8 @@ theme=mellow
 # gtk-titlebar=true
 gtk-wide-tabs=false
 gtk-tabs-location=hidden
+window-height=40
+window-width=140
 
 # Keybindings
 
