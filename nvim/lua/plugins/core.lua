@@ -2,9 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "rose-pine",
-      -- colorscheme = "catppuccin",
-      colorscheme = "mellow",
+      colorscheme = "vague",
     },
   },
   { "ellisonleao/gruvbox.nvim", enabled = false },

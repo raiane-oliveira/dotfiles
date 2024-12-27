@@ -1,1 +1,14 @@
 theme=mellow
+
+# Window configuration
+
+# window-decoration=false
+# gtk-titlebar=true
+gtk-wide-tabs=false
+gtk-tabs-location=hidden
+
+# Keybindings
+
+keybind=ctrl+shift+g=toggle_tab_overview
+window-padding-x=10
+
