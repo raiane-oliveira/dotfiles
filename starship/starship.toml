@@ -24,3 +24,13 @@ vimcmd_replace_one_symbol = "[󰍟🅁 ](bold fg:blue)"
 [[battery.display]]
 threshold = 20
 style = 'bold red'
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Programming" = "🖳 "
+"Videos" = " "
+"Desktop" = " "
+"RaianeFlix" = "🎥 "
