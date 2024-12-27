@@ -26,7 +26,7 @@ alias pn=pnpm
 alias lazyd=lazydocker
 alias lazyg=lazygit
 alias cpc="xclip -sel c"
-alias ls="eza --oneline --color=always --icons=always"
+alias ls="eza --color=always --icons=always"
 
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"
