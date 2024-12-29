@@ -3,16 +3,18 @@ font-size=13
 theme=mellow
 
 # Window configuration
-
 # window-decoration=false
 # gtk-titlebar=true
 gtk-wide-tabs=false
 gtk-tabs-location=hidden
 window-height=40
 window-width=140
+window-padding-x=10
 
 # Keybindings
 
 keybind=ctrl+shift+g=toggle_tab_overview
-window-padding-x=10
-
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top

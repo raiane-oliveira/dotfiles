@@ -90,3 +90,5 @@ export BAT_THEME="Catppuccin Mocha"
 
 zoxide init fish | source
 thefuck --alias | source
+
+neofetch
