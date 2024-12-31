@@ -11,5 +11,6 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `scripts` -> `~/scripts`
 - `tmux/.tmux.conf` -> `~/.tmux.conf`
 - `vim/.vimrc` -> `~/.vimrc`
+- `vim/.ideavimrc` -> `~/.ideavimrc`
 - `wezterm/colors` -> `~/.config/wezterm/colors`
 - `wezterm/.wezterm.lua` -> `~/.wezterm.lua`
