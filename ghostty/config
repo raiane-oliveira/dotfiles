@@ -10,11 +10,14 @@ gtk-tabs-location=hidden
 window-height=40
 window-width=140
 window-padding-x=10
+window-padding-y=10
+
+confirm-close-surface=false
 
 # Keybindings
 
 keybind=ctrl+shift+g=toggle_tab_overview
-keybind = ctrl+l=goto_split:right
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+k=goto_split:top
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top

@@ -5,7 +5,7 @@ return {
       formatters_by_ft = {
         javascript = { "eslint_d", "prettierd", "biome", stop_after_first = true },
         javascriptreact = { "eslint_d", "prettierd", "biome", stop_after_first = true },
-        typescript = { "eslint_d", "prettierd", "biome", stop_after_first = true },
+        typescript = { "eslint_d", "prettierd", "biome" },
         -- typescriptreact = { "biome", "eslint_d", stop_after_first = true },
         typescriptreact = { "eslint_d", "prettierd", "biome", stop_after_first = true },
         -- javascript = { "prettierd", "eslint_d", stop_after_first = true },

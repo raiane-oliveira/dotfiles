@@ -38,7 +38,7 @@ return {
   },
   {
     "mellow-theme/mellow.nvim",
-    lazy = false,
+    -- lazy = false,
     priority = 1000,
     config = function()
       vim.g.mellow_italic_functions = true
@@ -93,6 +93,8 @@ return {
   },
   {
     "vague2k/vague.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
       require("vague").setup({
         transparent = transparency,
