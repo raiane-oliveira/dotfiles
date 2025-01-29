@@ -24,7 +24,7 @@ end
 # Alias
 alias pn=pnpm
 alias lazyd=lazydocker
-alias lazyg=lazygit
+alias lg=lazygit
 alias cpc="xclip -sel c"
 alias ls="eza --color=always --icons=always"
 
@@ -91,4 +91,10 @@ export BAT_THEME="Catppuccin Mocha"
 zoxide init fish | source
 thefuck --alias | source
 
-neofetch
+if status is-interactive
+    neofetch
+end
+
+if status is-interactive
+    export MANPAGER="nvim +Man!"
+end
