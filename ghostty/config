@@ -16,7 +16,7 @@ confirm-close-surface=false
 
 # Keybindings
 
-keybind=ctrl+shift+g=toggle_tab_overview
+keybind = ctrl+shift+g=toggle_tab_overview
 keybind = ctrl+shift+l=goto_split:right
 keybind = ctrl+shift+h=goto_split:left
 keybind = ctrl+shift+j=goto_split:bottom
