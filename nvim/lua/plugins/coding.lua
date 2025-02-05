@@ -1,30 +1,45 @@
-local cmp = require("cmp")
-
 return {
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
+    "saghen/blink.cmp",
     opts = {
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+      completion = {
+        menu = {
+          border = "single",
+          draw = {
+            components = {
+              kind_icon = {
+                ellipsis = false,
+                text = function(ctx)
+                  local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return kind_icon
+                end,
+                -- Optionally, you may also use the highlights from mini.icons
+                highlight = function(ctx)
+                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return hl
+                end,
+              },
+            },
+          },
+        },
+        documentation = { window = { border = "single" } },
+        list = { selection = { preselect = true, auto_insert = false } },
       },
-      mapping = {
-        ["<Tab>"] = cmp.mapping.confirm(),
+      signature = { window = { border = "single" } },
+      keymap = {
+        ["<Tab>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
+          "fallback",
+        },
       },
     },
-  },
-  {
-    "nvim-cmp",
-    optional = true,
-    dependencies = { "codeium.nvim" },
-    opts = function(_, opts)
-      table.insert(opts.sources, 1, {
-        name = "codeium",
-        group_index = 1,
-        priority = 100,
-      })
-    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -40,12 +55,12 @@ return {
     enabled = false,
   },
   {
-    "nvim-telescope/telescope.nvim",
+    "ibhagwan/fzf-lua",
+    cmd = "FzfLua",
     keys = {
       { "<leader>/", false },
-      { "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
-      { "<leader><leader>", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
-      { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+      { "<leader>fw", "<cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
+      { "<leader><leader>", "<cmd>FzfLua files<CR>", desc = "Find Files" },
     },
   },
   {

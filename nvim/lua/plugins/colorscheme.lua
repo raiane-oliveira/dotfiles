@@ -1,4 +1,4 @@
-local transparency = false
+local transparency = true
 
 return {
   {

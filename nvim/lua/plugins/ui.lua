@@ -54,8 +54,12 @@ local dashboard_config = {
 return {
   {
     "folke/snacks.nvim",
+    ---@type snacks.Config
     opts = {
       dashboard = dashboard_config,
+      indent = {
+        enabled = false,
+      },
     },
   },
   {
@@ -63,24 +67,6 @@ return {
     opts = {
       options = {
         always_show_bufferline = true,
-      },
-    },
-  },
-  {
-    "echasnovski/mini.indentscope",
-    opts = {
-      options = { try_as_border = true },
-      draw = {
-        -- animation = require("mini.indentscope").gen_animation.none(),
-      },
-    },
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      indent = {
-        char = "",
-        tab_char = "",
       },
     },
   },

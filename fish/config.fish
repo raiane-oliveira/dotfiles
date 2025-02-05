@@ -1,15 +1,11 @@
 set -g fish_greeting
+set -gx JAVA_HOME /usr/lib/jvm/java-1.21.0-openjdk-amd64
 
 starship init fish | source
 
 export PATH="$HOME/.local/bin:$PATH"
 
 source ~/.asdf/asdf.fish
-
-# if status is-interactive
-#     # Commands to run in interactive sessions can go here
-#     eval "(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# end
 
 # Homebrew
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -62,7 +58,7 @@ fzf --fish | source
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude node_modules"
 
 # FZF Rose pine theme
 # export FZF_DEFAULT_OPTS="--height 50% --layout=default --border \
