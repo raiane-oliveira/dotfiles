@@ -5,6 +5,9 @@ let mapleader = " "
 set relativenumber
 set number
 
+" Minimal number of screen lines to keep above and below the cursor.
+" set scrolloff=10
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 

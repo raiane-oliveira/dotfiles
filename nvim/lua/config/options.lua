@@ -8,3 +8,8 @@ opt.wrap = true
 vim.g.lazyvim_prettier_needs_config = false
 
 vim.g.snacks_animate = false
+
+opt.spelllang = { "en", "pt" }
+opt.cursorline = false
+
+opt.listchars = { tab = "» ", trail = " ", nbsp = "␣" }

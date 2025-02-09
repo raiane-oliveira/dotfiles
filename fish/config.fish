@@ -23,6 +23,7 @@ alias lazyd=lazydocker
 alias lg=lazygit
 alias cpc="xclip -sel c"
 alias ls="eza --color=always --icons=always"
+alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"

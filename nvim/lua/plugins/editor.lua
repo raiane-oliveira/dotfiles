@@ -24,6 +24,12 @@ return {
         enable = true,
         update_root = true,
       },
+      window = {
+        mappings = {
+          ["P"] = { "toggle_preview", config = { use_float = true } },
+        },
+      },
+      popup_border_style = "rounded", -- "NC", "double", "none", "rounded", "shadow", "single" or "solid"
     },
   },
 }

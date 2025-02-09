@@ -6,34 +6,40 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { ".env", ".env.*" },
   group = vim.api.nvim_create_augroup("__env", { clear = true }),
   callback = function(args)
-    vim.diagnostic.disable(args.buf)
+    vim.diagnostic.enable(false, {
+      bufnr = args.buf,
+    })
+
+    vim.diagnostic.reset(nil, args.buf)
   end,
 })
 
--- vim.api.nvim_create_autocmd("BufDelete", {
---   group = vim.api.nvim_create_augroup("bufdelpost_autocmd", {}),
---   desc = "BufDeletePost User autocmd",
---   callback = function()
---     vim.schedule(function()
---       vim.api.nvim_exec_autocmds("User", {
---         pattern = "BufDeletePost",
---       })
---     end)
---   end,
--- })
+--[[ Open dashboard when no available buffers
+vim.api.nvim_create_autocmd("BufDelete", {
+  group = vim.api.nvim_create_augroup("bufdelpost_autocmd", {}),
+  desc = "BufDeletePost User autocmd",
+  callback = function()
+    vim.schedule(function()
+      vim.api.nvim_exec_autocmds("User", {
+        pattern = "BufDeletePost",
+      })
+    end)
+  end,
+})
 
--- vim.api.nvim_create_autocmd("User", {
---   pattern = "BufDeletePost",
---   group = vim.api.nvim_create_augroup("dashboard_delete_buffers", {}),
---   desc = "Open Dashboard when no available buffers",
---   callback = function(ev)
---     local deleted_name = vim.api.nvim_buf_get_name(ev.buf)
---     local deleted_ft = vim.api.nvim_get_option_value("filetype", { buf = ev.buf })
---     local deleted_bt = vim.api.nvim_get_option_value("buftype", { buf = ev.buf })
---     local dashboard_on_empty = deleted_name == "" and deleted_ft == "" and deleted_bt == ""
---
---     if dashboard_on_empty then
---       Snacks.dashboard.open()
---     end
---   end,
--- })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "BufDeletePost",
+  group = vim.api.nvim_create_augroup("dashboard_delete_buffers", {}),
+  desc = "Open Dashboard when no available buffers",
+  callback = function(ev)
+    local deleted_name = vim.api.nvim_buf_get_name(ev.buf)
+    local deleted_ft = vim.api.nvim_get_option_value("filetype", { buf = ev.buf })
+    local deleted_bt = vim.api.nvim_get_option_value("buftype", { buf = ev.buf })
+    local dashboard_on_empty = deleted_name == "" and deleted_ft == "" and deleted_bt == ""
+
+    if dashboard_on_empty then
+      Snacks.dashboard.open()
+    end
+  end,
+})
+--]]
