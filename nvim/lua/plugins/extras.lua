@@ -1,11 +1,5 @@
 return {
   {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
-    end,
-  },
-  {
     "echasnovski/mini.comment",
     config = function()
       require("mini.comment").setup({

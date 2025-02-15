@@ -4,15 +4,15 @@ local dashboard_config = {
       [[
 
 
-     ███▄    █     ▒█████      ██▓    ▄████▄     ▓█████   
-     ██ ▀█   █    ▒██▒  ██▒   ▓██▒   ▒██▀ ▀█     ▓█   ▀   
-    ▓██  ▀█ ██▒   ▒██░  ██▒   ▒██▒   ▒▓█    ▄    ▒███     
-    ▓██▒  ▐▌██▒   ▒██   ██░   ░██░   ▒▓▓▄ ▄██▒   ▒▓█  ▄   
-    ▒██░   ▓██░   ░ ████▓▒░   ░██░   ▒ ▓███▀ ░   ░▒████▒  
-    ░ ▒░   ▒ ▒    ░ ▒░▒░▒░    ░▓     ░ ░▒ ▒  ░   ░░ ▒░ ░  
-    ░ ░░   ░ ▒░     ░ ▒ ▒░     ▒ ░     ░  ▒       ░ ░  ░  
-       ░   ░ ░    ░ ░ ░ ▒      ▒ ░   ░              ░     
-             ░        ░ ░      ░     ░ ░            ░  ░  
+     ███▄    █     ▒█████      ██▓    ▄████▄     ▓█████
+     ██ ▀█   █    ▒██▒  ██▒   ▓██▒   ▒██▀ ▀█     ▓█   ▀
+    ▓██  ▀█ ██▒   ▒██░  ██▒   ▒██▒   ▒▓█    ▄    ▒███
+    ▓██▒  ▐▌██▒   ▒██   ██░   ░██░   ▒▓▓▄ ▄██▒   ▒▓█  ▄
+    ▒██░   ▓██░   ░ ████▓▒░   ░██░   ▒ ▓███▀ ░   ░▒████▒
+    ░ ▒░   ▒ ▒    ░ ▒░▒░▒░    ░▓     ░ ░▒ ▒  ░   ░░ ▒░ ░
+    ░ ░░   ░ ▒░     ░ ▒ ▒░     ▒ ░     ░  ▒       ░ ░  ░
+       ░   ░ ░    ░ ░ ░ ▒      ▒ ░   ░              ░
+             ░        ░ ░      ░     ░ ░            ░  ░
                                      ░                    ]],
     },
     keys = {
@@ -22,8 +22,11 @@ local dashboard_config = {
         desc = "Config",
         action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
       },
+      { icon = " ", key = "p", desc = "Projects", action = ":lua Snacks.picker.projects()" },
       { icon = " ", key = "s", desc = "Restore Session", section = "session" },
       { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+
+      --   Projects                                                p
     },
   },
 
@@ -60,6 +63,13 @@ return {
       indent = {
         enabled = false,
       },
+      explorer = {
+        enabled = false,
+      },
+      zen = {
+        enabled = false,
+      },
+      image = {},
     },
   },
   {

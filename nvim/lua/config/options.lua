@@ -12,4 +12,4 @@ vim.g.snacks_animate = false
 opt.spelllang = { "en", "pt" }
 opt.cursorline = false
 
-opt.listchars = { tab = "» ", trail = " ", nbsp = "␣" }
+opt.listchars = { tab = "  ", trail = " ", nbsp = "␣" }

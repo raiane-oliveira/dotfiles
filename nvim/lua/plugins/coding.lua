@@ -42,32 +42,16 @@ return {
     },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      auto_install = true,
-      highlight = {
-        enable = true,
-      },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    enabled = false,
-  },
-  {
-    "ibhagwan/fzf-lua",
-    cmd = "FzfLua",
+    "folke/snacks.nvim",
     keys = {
       { "<leader>/", false },
-      { "<leader>fw", "<cmd>FzfLua live_grep<CR>", desc = "Live Grep" },
-      { "<leader><leader>", "<cmd>FzfLua files<CR>", desc = "Find Files" },
-    },
-  },
-  {
-    "ellisonleao/dotenv.nvim",
-    opts = {
-      enable_on_load = true, -- will load your .env file upon loading a buffer
-      verbose = false, -- show error notification if .env file is not found and if .env is loaded
+      {
+        "<leader>fw",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Live Grep",
+      },
     },
   },
 }
