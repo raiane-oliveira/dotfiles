@@ -1,7 +1,19 @@
 return {
   {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      local luasnip = require("luasnip")
+
+      luasnip.add_snippets("typescriptreact", require("snippets.react"))
+      luasnip.add_snippets("javascriptreact", require("snippets.react"))
+    end,
+  },
+  {
     "saghen/blink.cmp",
     opts = {
+      snippets = {
+        preset = "luasnip",
+      },
       completion = {
         menu = {
           border = "single",
