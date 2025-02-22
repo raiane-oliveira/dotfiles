@@ -13,3 +13,5 @@ opt.spelllang = { "en", "pt" }
 opt.cursorline = false
 
 opt.listchars = { tab = "  ", trail = " ", nbsp = "␣" }
+
+opt.guicursor = "n-v-c-i:block"
