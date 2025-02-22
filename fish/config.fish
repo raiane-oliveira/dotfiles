@@ -17,6 +17,9 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
+# Binds
+bind \cf accept-autosuggestion -M insert
+
 # Alias
 alias pn=pnpm
 alias lazyd=lazydocker
@@ -29,7 +32,7 @@ alias nv="nvim"
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"
 
-# Open files in nvim with fzf and entry directories with zoxide
+# Open old files in nvim with fzf and entry directories with zoxide
 alias nlof="~/scripts/fzf_listoldfiles.sh"
 alias nzo="~/scripts/zoxide_openfiles_nvim.sh"
 
