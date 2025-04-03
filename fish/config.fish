@@ -99,3 +99,10 @@ end
 if status is-interactive
     export MANPAGER="nvim +Man!"
 end
+
+# Cheat sh
+function cheat.sh
+    curl cheat.sh/$argv
+end
+
+complete -c cheat.sh -xa '(curl -s cheat.sh/:list)'

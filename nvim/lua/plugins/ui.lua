@@ -25,8 +25,6 @@ local dashboard_config = {
       { icon = " ", key = "p", desc = "Projects", action = ":lua Snacks.picker.projects()" },
       { icon = " ", key = "s", desc = "Restore Session", section = "session" },
       { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-
-      --   Projects                                                p
     },
   },
 
@@ -69,14 +67,16 @@ return {
       zen = {
         enabled = false,
       },
-      image = {},
+      image = {
+        enabled = false,
+      },
     },
   },
   {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
-        -- always_show_bufferline = true,
+        always_show_bufferline = true,
       },
     },
   },

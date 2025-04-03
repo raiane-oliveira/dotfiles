@@ -15,6 +15,14 @@ return {
       },
     },
     opts = {
+      default_component_configs = {
+        type = {
+          enabled = false,
+        },
+        last_modified = {
+          enabled = false,
+        },
+      },
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
