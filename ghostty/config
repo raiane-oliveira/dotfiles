@@ -3,7 +3,7 @@ font-size=13
 theme=mellow
 
 # Window configuration
-window-decoration=false
+#window-decoration=false
 gtk-wide-tabs=false
 gtk-tabs-location=hidden
 window-height=40
