@@ -14,3 +14,12 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `vim/.ideavimrc` -> `~/.ideavimrc`
 - `wezterm/colors` -> `~/.config/wezterm/colors`
 - `wezterm/.wezterm.lua` -> `~/.wezterm.lua`
+
+## Themes and Icons for GTK3/4
+
+- Themes
+  - Rosepine BL (borderless) MB (MacOS buttons)
+- Icons
+  - Fluent
+- Cursor
+  - Rosé Pine Dawn

@@ -3,7 +3,7 @@ set -gx JAVA_HOME /usr/lib/jvm/java-1.21.0-openjdk-amd64
 
 starship init fish | source
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.asdf/installs/nodejs/20.19.0/bin"
 
 # ASDF configuration code
 if test -z $ASDF_DATA_DIR
