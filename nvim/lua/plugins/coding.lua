@@ -6,6 +6,7 @@ return {
 
       luasnip.add_snippets("typescriptreact", require("snippets.react"))
       luasnip.add_snippets("javascriptreact", require("snippets.react"))
+      luasnip.add_snippets("all", require("snippets.lorem"))
     end,
   },
   {
