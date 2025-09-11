@@ -1,5 +1,5 @@
 set -g fish_greeting
-set -gx JAVA_HOME /usr/lib/jvm/java-1.21.0-openjdk-amd64
+set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
 
 starship init fish | source
 
@@ -40,6 +40,9 @@ alias cpc="xclip -sel c"
 alias ls="eza --color=always --icons=always"
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 alias nv="nvim"
+alias dcs="docker compose start"
+alias dcp="docker compose stop"
+alias c="clear"
 
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"
@@ -58,14 +61,14 @@ set fish_vi_force_cursor
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
 set fish_cursor_default block
-# Set the insert mode cursor to a line
-set fish_cursor_insert line
+# Set the insert mode cursor to a block
+set fish_cursor_insert block
 # Set the replace mode cursors to an underscore
 set fish_cursor_replace_one underscore
 set fish_cursor_replace underscore
-# Set the external cursor to a line. The external cursor appears when a command is started.
+# Set the external cursor to a block (line). The external cursor appears when a command is started.
 # The cursor shape takes the value of fish_cursor_default when fish_cursor_external is not specified.
-set fish_cursor_external line
+set fish_cursor_external block
 # The following variable can be used to configure cursor shape in
 # visual mode, but due to fish_cursor_default, is redundant here
 set fish_cursor_visual block
@@ -117,3 +120,6 @@ function cheat.sh
 end
 
 complete -c cheat.sh -xa '(curl -s cheat.sh/:list)'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc' ]; . '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc'; end

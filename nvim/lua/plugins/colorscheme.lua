@@ -4,7 +4,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "mellow",
+      colorscheme = "mellifluous",
     },
   },
   {
@@ -33,5 +33,14 @@ return {
 
       vim.g.edge_enable_italic = true
     end,
+  },
+  {
+    "ramojus/mellifluous.nvim",
+    opts = {
+      colorset = "mountain",
+      transparent_background = {
+        enabled = true,
+      },
+    },
   },
 }

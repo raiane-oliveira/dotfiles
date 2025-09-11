@@ -1,0 +1,34 @@
+{
+  "name": "mellow-theme",
+  "displayName": "Mellow Theme",
+  "description": "Tema escuro suave baseado na paleta Mellow",
+  "version": "1.0.0",
+  "publisher": "Raiane Oliveira",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Mellow",
+        "uiTheme": "vs-dark",
+        "path": "./themes/mellow-color-theme.json"
+      }
+    ]
+  },
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raiane-oliveira/mellow-theme"
+  },
+  "keywords": [
+    "dark theme",
+    "mellow",
+    "soft colors"
+  ],
+  "license": "MIT"
+}
+

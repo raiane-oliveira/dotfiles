@@ -15,3 +15,5 @@ opt.cursorline = false
 opt.listchars = { tab = "  ", trail = " ", nbsp = "␣" }
 
 opt.guicursor = "n-v-c-i:block"
+
+opt.laststatus = 3
