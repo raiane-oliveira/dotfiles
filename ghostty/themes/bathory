@@ -1,0 +1,51 @@
+
+# Bathory theme for Ghostty
+# Author: Andrea Schiavini (original code by Casey Miller)
+# Adapted for Ghostty theme format
+
+# Basic colors
+background = #000000
+foreground = #c1c1c1
+
+# Cursor colors
+cursor-color = #c1c1c1
+cursor-text = #000000
+
+# Selection colors
+selection-background = #333333
+selection-foreground = #c1c1c1
+
+# Standard terminal colors (0-15)
+
+# Black
+palette = 0=#3E2018
+palette = 8=#505050
+
+# Red
+palette = 1=#5f8787
+palette = 9=#5f8787
+
+# Green
+palette = 2=#c1c1c1
+palette = 10=#c1c1c1
+
+# Yellow
+palette = 3=#888888
+palette = 11=#888888
+
+# Blue
+palette = 4=#aaaaaa
+palette = 12=#aaaaaa
+
+# Magenta
+palette = 5=#999999
+palette = 13=#e78a43
+
+# Cyan
+palette = 6=#fbcb97
+palette = 14=#fbcb97
+
+# White
+palette = 7=#c1c1c1
+palette = 15=#c1c1c1
+

@@ -1,6 +1,6 @@
 # UI
 font-size=13
-theme=mellow
+theme=bathory
 shell-integration-features = no-cursor
 cursor-style=block
 cursor-style-blink=false

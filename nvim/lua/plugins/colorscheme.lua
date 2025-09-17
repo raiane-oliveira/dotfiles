@@ -1,11 +1,16 @@
 local transparency = true
 
-return {
+local future_themes = {
   {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "mellifluous",
-    },
+    "cdmill/neomodern.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("neomodern").setup({
+        -- optional configuration here
+      })
+      require("neomodern").load()
+    end,
   },
   {
     "mellow-theme/mellow.nvim",
@@ -32,6 +37,63 @@ return {
       }
 
       vim.g.edge_enable_italic = true
+    end,
+  },
+  {
+    "everviolet/nvim",
+    name = "evergarden",
+    priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
+    opts = {
+      theme = {
+        variant = "winter", -- 'winter'|'fall'|'spring'|'summer'
+        accent = "green",
+      },
+      editor = {
+        transparent_background = transparency,
+        sign = { color = "none" },
+        float = {
+          color = "mantle",
+          solid_border = false,
+        },
+        completion = {
+          color = "surface0",
+        },
+      },
+    },
+  },
+  {
+    "vague2k/vague.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other plugins
+    opts = {
+      transparent = transparency,
+    },
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    opts = {
+      transparent = transparency,
+    },
+  },
+}
+
+return {
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "mellifluous",
+    },
+  },
+  -- Using lazy.nvim
+  {
+    "metalelf0/black-metal-theme-neovim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("black-metal").setup({
+        -- optional configuration here
+      })
+      require("black-metal").load()
     end,
   },
   {
