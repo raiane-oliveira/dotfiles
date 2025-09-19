@@ -92,6 +92,7 @@ return {
     config = function()
       require("black-metal").setup({
         -- optional configuration here
+        transparent = transparency,
       })
       require("black-metal").load()
     end,
