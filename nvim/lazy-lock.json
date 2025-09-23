@@ -23,6 +23,7 @@
   "mason.nvim": { "branch": "main", "commit": "7dc4facca9702f95353d5a1f87daf23d78e31c2a" },
   "mcphub.nvim": { "branch": "main", "commit": "5e39057c4405bc7b83ef9fd38a37d18c9330e403" },
   "mellifluous.nvim": { "branch": "main", "commit": "b51ffc0b3d39ce16dec3826b6b2a259f10367456" },
+  "mellow.nvim": { "branch": "main", "commit": "5cd188489bcc7eb512f0a30581ad972070f8e5cd" },
   "mini.ai": { "branch": "main", "commit": "dcd346a3eda9121e917950680e5eb59f59f78aae" },
   "mini.comment": { "branch": "main", "commit": "a9474da9175b27a5c32ee712433c23b9b0f7f139" },
   "mini.files": { "branch": "main", "commit": "2db6db37c37ee5955fe72907e33fa31cd2dd0fd4" },

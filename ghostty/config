@@ -1,12 +1,15 @@
 # UI
 font-size=13
-theme=bathory
+theme=Mellow
 shell-integration-features = no-cursor
 cursor-style=block
 cursor-style-blink=false
+# background-image=/home/raianeeo/Pictures/Wallpapers/illustration-night-sky.jpg
+# background-image-fit=cover
+# background-image-opacity=0.02
 
 # Window configuration
-#window-decoration=false
+# window-decoration=none
 gtk-wide-tabs=false
 gtk-tabs-location=hidden
 window-height=40
@@ -24,3 +27,4 @@ keybind = ctrl+shift+j=goto_split:bottom
 keybind = ctrl+shift+k=goto_split:top
 keybind = ctrl+m=toggle_split_zoom
 keybind = shift+enter=text:\x1b\r
+# keybind = global:ctrl+q=toggle_quick_terminal
