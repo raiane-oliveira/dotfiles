@@ -18,9 +18,18 @@ return {
         enabled = false,
       }
 
-      local keymaps = require("lazyvim.plugins.lsp.keymaps").get()
-      table.insert(keymaps, { "<leader>R", "<cmd>LspRestart<cr>", desc = "LSP Restart" })
-      opts.keys = keymaps
+      -- opts.keys = {
+      -- }
     end,
+    keys = {
+      { "<leader>R", "<cmd>LspRestart<cr>", desc = "LSP Restart" },
+    },
+  },
+  {
+    "qvalentin/helm-ls.nvim",
+    ft = "helm",
+    opts = {
+      yamlls = { path = "yaml-language-server" },
+    },
   },
 }

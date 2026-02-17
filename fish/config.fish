@@ -3,7 +3,7 @@ set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
 
 starship init fish | source
 
-export PATH="$PATH:$HOME/.asdf/installs/nodejs/20.19.0/bin"
+export PATH="$PATH:$HOME/.asdf/installs/nodejs/20.19.0/bin:$HOME/.pulumi/bin:$HOME/go/bin"
 
 # ASDF configuration code
 if test -z $ASDF_DATA_DIR
@@ -38,11 +38,14 @@ alias lazyd=lazydocker
 alias lg=lazygit
 alias cpc="xclip -sel c"
 alias ls="eza --color=always --icons=always"
-alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+alias nvclean='NVIM_APPNAME="nvim-clean" nvim'
 alias nv="nvim"
 alias dcs="docker compose start"
 alias dcp="docker compose stop"
 alias c="clear"
+alias opc="open ." # Open current directory
+alias k="kubectl"
+alias ai="ollama run gemma3"
 
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"
@@ -122,4 +125,12 @@ end
 complete -c cheat.sh -xa '(curl -s cheat.sh/:list)'
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc' ]; . '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc' ]
+    . '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc'
+end
+
+# opencode
+fish_add_path /home/raianeeo/.opencode/bin
+fish_add_path $HOME/.local/bin
+
+/home/raianeeo/.local/bin/mise activate fish | source # added by https://mise.run/fish

@@ -83,5 +83,55 @@ return {
         desc = "Live Grep",
       },
     },
+    opts = {
+      picker = {
+        sources = {
+          files = {
+            -- Permite que o picker mostre arquivos ocultos (como .env)
+            hidden = true,
+            ignored = true, -- Inclui arquivos ignorados pelo Git (como .env)
+            -- Define os diretórios a serem excluídos da pesquisa
+            exclude = {
+              "**/node_modules/*",
+              "**/.git/*",
+              "**/build/*",
+              "**/dist/*",
+              "**/.next/*",
+              "**/target/*",
+            },
+          },
+          grep = {
+            hidden = true, -- Permite a busca em arquivos ocultos (como .env)
+            ignored = true, -- Inclui arquivos ignorados pelo Git (como .env)
+            exclude = {
+              "**/node_modules/*",
+              "**/.git/*",
+              "**/build/*",
+              "**/dist/*",
+              "**/.next/*",
+              "**/playwright-report/*",
+              "**/target/*",
+              "**/target/classes/*",
+            },
+          },
+        },
+        formatters = {
+          file = {
+            truncate = 80,
+          },
+        },
+        layout = {
+          preset = "telescope", -- [default|dropdown|ivy|select|sidebar|telescope|vertical|vscode]
+          preview = false,
+          layout = {
+            backdrop = false,
+            width = 0.5,
+            min_width = 80,
+            height = 0.5,
+            min_height = 3,
+          },
+        },
+      },
+    },
   },
 }

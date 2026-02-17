@@ -6,11 +6,12 @@ local map = vim.keymap.set
 local del = vim.keymap.del
 
 -- Remove default keymaps
-del({ "n", "i", "v" }, "<A-j>")
-del({ "n", "i", "v" }, "<A-k>")
+-- del({ "n", "i", "v" }, "<A-j>")
+-- del({ "n", "i", "v" }, "<A-k>")
 
 -- Copy all
 map("n", "<C-c>", "<cmd> %y+ <CR>", {})
+map("n", "Y", "y$", { desc = "Yank to end of line" })
 
 -- Better window movement location
 map("n", "<C-d>", "<C-d>zz")

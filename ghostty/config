@@ -1,19 +1,21 @@
 # UI
 font-size=13
-theme=Mellow
+# theme=Mellow
+theme=Mellifluous
 shell-integration-features = no-cursor
 cursor-style=block
 cursor-style-blink=false
-# background-image=/home/raianeeo/Pictures/Wallpapers/illustration-night-sky.jpg
-# background-image-fit=cover
-# background-image-opacity=0.02
+background-image=/home/raianeeo/Pictures/Wallpapers/planta-tv.jpg
+background-image-fit=cover
+background-image-opacity=0.01
+background-opacity=1
 
 # Window configuration
 # window-decoration=none
 gtk-wide-tabs=false
 gtk-tabs-location=hidden
 window-height=40
-window-width=140
+window-width=130
 window-padding-x=10
 window-padding-y=10
 

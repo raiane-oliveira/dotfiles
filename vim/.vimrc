@@ -73,3 +73,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
   set laststatus=2
 
 " }}}
+
+" Keybinds
+" Toggle netrw
+nnoremap <leader>e :Lexplore<CR>

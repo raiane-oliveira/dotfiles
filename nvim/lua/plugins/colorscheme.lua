@@ -13,6 +13,14 @@ local future_themes = {
     end,
   },
   {
+    "vague2k/vague.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other plugins
+    opts = {
+      transparent = transparency,
+    },
+  },
+  {
     "everviolet/nvim",
     name = "evergarden",
     priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
@@ -35,14 +43,6 @@ local future_themes = {
     },
   },
   {
-    "vague2k/vague.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other plugins
-    opts = {
-      transparent = transparency,
-    },
-  },
-  {
     "rebelot/kanagawa.nvim",
     opts = {
       transparent = transparency,
@@ -54,7 +54,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "mellow",
+      colorscheme = "mellifluous",
     },
   },
   -- Using lazy.nvim
