@@ -45,7 +45,7 @@ alias dcp="docker compose stop"
 alias c="clear"
 alias opc="open ." # Open current directory
 alias k="kubectl"
-alias ai="ollama run gemma3"
+alias ai="~/scripts/ask_ai.sh"
 
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"
