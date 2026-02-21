@@ -1,7 +1,7 @@
 # UI
 font-size=13
-# theme=Mellow
-theme=Mellifluous
+theme=Mellow
+# theme=Mellifluous
 shell-integration-features = no-cursor
 cursor-style=block
 cursor-style-blink=false

@@ -79,6 +79,8 @@ return {
           "node_modules",
           "--exclude",
           ".next",
+          "--exclude",
+          "target",
         },
       },
       sync_root_with_cwd = true,
