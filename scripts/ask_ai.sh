@@ -16,12 +16,20 @@ REDUCED_OUTPUT_DIR="~/Documents/ai/responses"
 TEMP_FILE="/tmp/opencode_output_$$"
 PID_FILE="/tmp/opencode_pid_$$"
 
+# Variável para controlar salvamento
+SAVE_OUTPUT=true
+
+# Variáveis para controlar sessão e contexto
+CONTEXT_FILE=""
+SESSION_ID=""
+CONTINUE_SESSION=false
+
 # Função para limpar arquivos temporários
 cleanup() {
   rm -f "$TEMP_FILE" "$PID_FILE"
   # Para a animação se ainda estiver rodando
   if [[ -n "$LOADING_PID" ]]; then
-    kill $LOADING_PID 2>/dev/null
+    kill "$LOADING_PID" 2>/dev/null
   fi
 }
 
@@ -72,12 +80,28 @@ generate_filename() {
 
 # Função para executar opencode em background
 execute_opencode() {
-  local args="$*"
+  local user_args=("$@")
+  local opencode_cmd=(opencode run --model github-copilot/gpt-5-mini)
+
+  # Adiciona flags de sessão
+  if [[ "$CONTINUE_SESSION" == "true" ]]; then
+    opencode_cmd+=(--continue)
+  elif [[ -n "$SESSION_ID" ]]; then
+    opencode_cmd+=(--session "$SESSION_ID")
+  fi
+
+  # Adiciona arquivo de contexto
+  if [[ -n "$CONTEXT_FILE" ]]; then
+    opencode_cmd+=(--file "$CONTEXT_FILE")
+  fi
+
+  # Adiciona argumentos do usuário
+  opencode_cmd+=("${user_args[@]}")
 
   # Executa o comando e salva o output
   {
     echo $$ >"$PID_FILE"
-    opencode run --model github-copilot/gpt-5-mini "$@" 2>&1
+    "${opencode_cmd[@]}" 2>&1
   } >"$TEMP_FILE" &
 
   # Salva o PID do processo opencode
@@ -148,24 +172,96 @@ show_stats() {
 
 # Função principal
 main() {
-  # Verifica se há argumentos
-  if [[ $# -eq 0 ]]; then
+  # Parse flags primeiro
+  local opencode_args=()
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      --no-save)
+        SAVE_OUTPUT=false
+        shift
+        ;;
+      --context)
+        if [[ -n "$2" && ! "$2" =~ ^-- ]]; then
+          CONTEXT_FILE="$2"
+          shift 2
+        else
+          echo -e "${RED}❌ Erro: --context requer um arquivo${NC}"
+          exit 1
+        fi
+        ;;
+      --session)
+        if [[ -n "$2" && ! "$2" =~ ^-- ]]; then
+          SESSION_ID="$2"
+          shift 2
+        else
+          echo -e "${RED}❌ Erro: --session requer um ID de sessão${NC}"
+          exit 1
+        fi
+        ;;
+      --continue)
+        CONTINUE_SESSION=true
+        shift
+        ;;
+      *)
+        opencode_args+=("$1")
+        shift
+        ;;
+    esac
+  done
+
+  # Verifica se há argumentos após processar flags
+  if [[ ${#opencode_args[@]} -eq 0 ]]; then
     echo -e "${RED}❌ Erro: Nenhum argumento fornecido${NC}"
-    echo -e "${YELLOW}Uso: $0 [argumentos para opencode]${NC}"
-    echo -e "${YELLOW}Exemplo: $0 \"Crie uma função em Python para calcular fibonacci\"${NC}"
+    echo -e "${YELLOW}Uso: $0 [opções] [argumentos para opencode]${NC}"
+    echo -e "${YELLOW}Opções:${NC}"
+    echo -e "${YELLOW}  --no-save              Não salva o output em arquivo markdown${NC}"
+    echo -e "${YELLOW}  --context <arquivo>    Anexa arquivo como contexto${NC}"
+    echo -e "${YELLOW}  --session <id>         Continua sessão específica${NC}"
+    echo -e "${YELLOW}  --continue             Continua última sessão${NC}"
+    echo -e "${YELLOW}${NC}"
+    echo -e "${YELLOW}Exemplos:${NC}"
+    echo -e "${YELLOW}  $0 \"Crie uma função em Python para calcular fibonacci\"${NC}"
+    echo -e "${YELLOW}  $0 --no-save \"Explique como funciona Docker\"${NC}"
+    echo -e "${YELLOW}  $0 --context README.md \"Explique este projeto\"${NC}"
+    echo -e "${YELLOW}  $0 --session abc123 \"Continue a implementação\"${NC}"
+    echo -e "${YELLOW}  $0 --continue \"Adicione testes para a função\"${NC}"
     exit 1
+  fi
+
+  # Validação do arquivo de contexto
+  if [[ -n "$CONTEXT_FILE" ]]; then
+    if [[ ! -f "$CONTEXT_FILE" ]]; then
+      echo -e "${RED}❌ Erro: Arquivo de contexto não encontrado: $CONTEXT_FILE${NC}"
+      exit 1
+    fi
+    echo -e "${BLUE}📄 Usando contexto: $CONTEXT_FILE${NC}"
+  fi
+
+  # Validação de conflitos de sessão
+  if [[ "$CONTINUE_SESSION" == "true" && -n "$SESSION_ID" ]]; then
+    echo -e "${RED}❌ Erro: Não é possível usar --continue e --session ao mesmo tempo${NC}"
+    exit 1
+  fi
+
+  # Feedback sobre sessão
+  if [[ "$CONTINUE_SESSION" == "true" ]]; then
+    echo -e "${BLUE}🔄 Continuando última sessão${NC}"
+  elif [[ -n "$SESSION_ID" ]]; then
+    echo -e "${BLUE}🔄 Continuando sessão: $SESSION_ID${NC}"
   fi
 
   echo -e "${BLUE} Iniciando execução do OpenCode...${NC}"
 
-  # Cria estrutura de diretórios
-  create_output_structure
-
-  # Gera nome do arquivo
-  local filename=$(generate_filename "$@")
+  # Cria estrutura de diretórios apenas se for salvar
+  if [[ "$SAVE_OUTPUT" == "true" ]]; then
+    create_output_structure
+    # Gera nome do arquivo
+    local filename=$(generate_filename "${opencode_args[@]}")
+  fi
 
   # Executa opencode
-  execute_opencode "$@"
+  execute_opencode "${opencode_args[@]}"
   local exit_code=$?
 
   # Verifica se houve output
@@ -186,11 +282,15 @@ main() {
 
   echo -e "\n=================================================================================="
 
-  # Salva output estruturado
-  save_structured_output "$filename" "$*" "$exit_code"
+  # Salva output estruturado apenas se a flag não foi usada
+  if [[ "$SAVE_OUTPUT" == "true" ]]; then
+    save_structured_output "$filename" "${opencode_args[*]}" "$exit_code"
+  else
+    echo -e "${YELLOW}📝 Output não foi salvo (--no-save utilizado)${NC}"
+  fi
 
   # Mostra estatísticas
-  show_stats "$FULL_OUTPUT_DIR/$filename"
+  # show_stats "$FULL_OUTPUT_DIR/$filename"
 }
 
 # Executa função principal
