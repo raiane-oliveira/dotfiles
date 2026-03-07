@@ -9,20 +9,22 @@ $battery\
 [username]
 style_user = 'bold os'
 style_root = 'bold os_admin'
-# format = '[  $user](fg:$style) '
+format = '[  $user](fg:$style) '
 # format = '[𓃠  $user](fg:$style) '
-format = '[✌︎︎  $user](fg:$style) '
+# format = '[✌︎︎  $user](fg:$style) '
+# format = '[𝅘𝅥𝅯 $user](fg:$style) '
 # format = '[☁︎  $user](fg:$style) '
 disabled = false
 show_always = true
 
 [character]
-success_symbol = "[󰍟](fg:$style)"
+# success_symbol = "[󰍟](fg:$style)"
+success_symbol = "[🢒](fg:$style)"
 error_symbol = "[ ⚠](fg:red)"
-vimcmd_symbol = '[󰍟🄽 ](bold fg:green)'
-vimcmd_visual_symbol = "[󰍟🅅 ](bold fg:red)"
-vimcmd_replace_symbol = "[󰍟🅁 ](bold fg:blue)"
-vimcmd_replace_one_symbol = "[󰍟🅁 ](bold fg:blue)"
+vimcmd_symbol = '[🢒🄽 ](bold fg:green)'
+vimcmd_visual_symbol = "[🢒🅅 ](bold fg:red)"
+vimcmd_replace_symbol = "[🢒🅁 ](bold fg:blue)"
+vimcmd_replace_one_symbol = "[🢒🅁 ](bold fg:blue)"
 
 [[battery.display]]
 threshold = 20
