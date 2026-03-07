@@ -61,6 +61,7 @@ customCommands:
           - Abstract to intent and impact, not raw edits
           - Be clear, concise, and meaningful in project history
           - If multiple changes exist, synthesize into one coherent summary
+          - Commit message must have a maximum of 75 characters
 
           Examples:
 

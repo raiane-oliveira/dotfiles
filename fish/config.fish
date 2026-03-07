@@ -46,6 +46,7 @@ alias c="clear"
 alias opc="open ." # Open current directory
 alias k="kubectl"
 alias ai="~/scripts/ask_ai.sh"
+alias spot="ncspot"
 
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"
