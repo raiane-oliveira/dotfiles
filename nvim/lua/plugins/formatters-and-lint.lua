@@ -20,6 +20,8 @@ return {
         javascript = formatJSFiles,
         typescript = formatJSFiles,
         html = { "prettierd" },
+        json = { "prettierd" },
+        python = { "ruff" },
       },
     },
   },
@@ -38,6 +40,8 @@ return {
         typescriptreact = { "eslint_d" },
 
         dockerfile = { "hadolint" },
+
+        python = { "ruff" },
       },
     },
   },

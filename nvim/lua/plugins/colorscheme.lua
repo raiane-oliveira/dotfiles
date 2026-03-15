@@ -1,4 +1,4 @@
-local transparency = true
+local transparency = false
 
 local future_themes = {
   {
@@ -52,12 +52,27 @@ local future_themes = {
 
 return {
   {
-    "LazyVim/LazyVim",
+    "everviolet/nvim",
+    name = "evergarden",
+    priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
     opts = {
-      colorscheme = "mellifluous",
+      theme = {
+        variant = "winter", -- 'winter'|'fall'|'spring'|'summer'
+        accent = "green",
+      },
+      editor = {
+        transparent_background = transparency,
+        sign = { color = "none" },
+        float = {
+          color = "mantle",
+          solid_border = false,
+        },
+        completion = {
+          color = "surface0",
+        },
+      },
     },
   },
-  -- Using lazy.nvim
   {
     "metalelf0/black-metal-theme-neovim",
     lazy = false,
@@ -105,5 +120,11 @@ return {
 
       vim.g.edge_enable_italic = true
     end,
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "evergarden",
+    },
   },
 }

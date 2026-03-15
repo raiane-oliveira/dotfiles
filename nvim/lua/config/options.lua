@@ -9,6 +9,7 @@ vim.g.lazyvim_prettier_needs_config = false
 
 vim.g.snacks_animate = false
 
+opt.spell = true
 opt.spelllang = { "en", "pt" }
 opt.cursorline = false
 
