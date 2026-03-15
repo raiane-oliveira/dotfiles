@@ -139,6 +139,26 @@ return {
             min_height = 3,
           },
         },
+        win = {
+          input = {
+            keys = {
+              ["y"] = { "copy_to_clipboard", mode = { "n" } },
+            },
+          },
+        },
+        actions = {
+          copy_to_clipboard = function(picker, item)
+            -- 'item.text' contém o conteúdo da linha selecionada
+            local content = item.text or item.file or ""
+
+            -- Copia para o registrador '+' (clipboard do sistema)
+            vim.fn.setreg("+", content)
+
+            vim.notify("Copiado para o clipboard: " .. content, vim.log.levels.INFO)
+
+            -- picker:close()
+          end,
+        },
       },
     },
   },
