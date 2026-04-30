@@ -1,0 +1,161 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+# Evergarden Winter Green variant
+# Based on: https://github.com/comfysage/evergarden (winter green)
+
+# Palette reference:
+#   background       #1e2528  (dark bg)
+#   background dark  #171c1f  (darker bg, for text on light)
+#   background muted #262f33  (secondary/muted bg)
+#   foreground       #f8f9e8  (cream white)
+#   green            #cbe3b3  (primary accent)
+#   red              #f57f82  (error/cut)
+#   muted teal       #6f8788  (borders)
+
+
+# : Manager {{{
+
+[mgr]
+cwd = { fg = "#cbe3b3" } # Evergarden Green
+
+# Find
+find_keyword  = { fg = "#f8f9e8", italic = true }                # Cream white
+find_position = { fg = "#f57f82", bg = "reset", italic = true }  # Evergarden Red
+
+# Marker
+marker_selected = { fg = "#cbe3b3", bg = "#cbe3b3" } # Evergarden Green
+marker_copied   = { fg = "#f8f9e8", bg = "#f8f9e8" } # Cream white
+marker_cut      = { fg = "#f57f82", bg = "#f57f82" } # Evergarden Red
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#6f8788" } # Muted Teal
+
+# Highlighting
+syntect_theme = "~/.config/bat/themes/Everforest-Soft.tmTheme"
+
+# : }}}
+
+
+# : Tabs {{{
+
+[tabs]
+active   = { fg = "#171c1f", bg = "#f8f9e8" }   # Darker bg, Cream white foreground
+inactive = { fg = "#cbe3b3", bg = "#262f33" }   # Evergarden Green on muted dark
+
+# : }}}
+
+
+# : Mode {{{
+
+[mode]
+normal_main = { fg = "#171c1f", bg = "#f8f9e8", bold = true } # Darker bg, Cream white foreground
+select_main = { fg = "#171c1f", bg = "#cbe3b3", bold = true } # Darker bg, Evergarden Green foreground
+unset_main  = { fg = "#171c1f", bg = "#f57f82", bold = true } # Darker bg, Evergarden Red foreground
+
+# : }}}
+
+
+# : Status {{{
+
+[status]
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Progress
+progress_label  = { fg = "#ffffff", bold = true }
+progress_normal = { fg = "#f8f9e8", bg = "#262f33" } # Cream white on muted dark
+progress_error  = { fg = "#f57f82", bg = "#262f33" } # Evergarden Red on muted dark
+
+# Permissions
+perm_type  = { fg = "#f8f9e8" } # Cream white
+perm_read  = { fg = "#f8f9e8" } # Cream white
+perm_write = { fg = "#f57f82" } # Evergarden Red
+perm_exec  = { fg = "#cbe3b3" } # Evergarden Green
+perm_sep   = { fg = "#6f8788" } # Muted Teal
+
+# : }}}
+
+
+# : Input {{{
+
+[input]
+border   = { fg = "#f8f9e8" }    # Cream white
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+# : }}}
+
+
+# : Pick {{{
+
+[pick]
+border   = { fg = "#f8f9e8" } # Cream white
+active   = { fg = "#f57f82" } # Evergarden Red
+inactive = {}
+
+# : }}}
+
+
+# : Tasks {{{
+
+[tasks]
+border  = { fg = "#f8f9e8" }    # Cream white
+title   = {}
+hovered = { underline = true }
+
+# : }}}
+
+
+# : Which {{{
+
+[which]
+mask            = { bg = "#1e2528" }            # Dark background
+cand            = { fg = "#cbe3b3" }            # Evergarden Green
+rest            = { fg = "#f8f9e8" }            # Cream white
+desc            = { fg = "#f57f82" }            # Evergarden Red
+separator       = "  "
+separator_style = { fg = "#262f33" }            # Muted dark
+
+# : }}}
+
+
+# : Help {{{
+
+[help]
+on      = { fg = "#f57f82" }                     # Evergarden Red
+run     = { fg = "#cbe3b3" }                     # Evergarden Green
+desc    = { fg = "#f8f9e8" }                     # Cream white
+hovered = { bg = "#262f33", bold = true }        # Muted dark background
+footer  = { fg = "#171c1f", bg = "#f8f9e8" }     # Darker bg, Cream white foreground
+
+# : }}}
+
+
+# : File-specific styles {{{
+
+[filetype]
+
+rules = [
+  # Images
+  { mime = "image/*", fg = "#cbe3b3" }, # Evergarden Green
+
+  # Videos
+  { mime = "video/*", fg = "#f8f9e8" }, # Cream white
+  { mime = "audio/*", fg = "#f8f9e8" }, # Cream white
+
+  # Archives
+  { mime = "application/zip",             fg = "#f57f82" }, # Evergarden Red
+  { mime = "application/gzip",            fg = "#f57f82" }, # Evergarden Red
+  { mime = "application/x-tar",           fg = "#f57f82" }, # Evergarden Red
+  { mime = "application/x-bzip",          fg = "#f57f82" }, # Evergarden Red
+  { mime = "application/x-bzip2",         fg = "#f57f82" }, # Evergarden Red
+  { mime = "application/x-7z-compressed", fg = "#f57f82" }, # Evergarden Red
+  { mime = "application/x-rar",           fg = "#f57f82" }, # Evergarden Red
+
+  # Fallback
+  { url = "*",  fg = "#f8f9e8" }, # Cream white
+  { url = "*/", fg = "#f8f9e8" }, # Cream white
+]
+
+# : }}}

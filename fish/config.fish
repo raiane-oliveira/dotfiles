@@ -93,13 +93,28 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git
 # --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 
 # FZF Mellow theme
+# export FZF_DEFAULT_OPTS="--height 50% --layout=default --border \
+# --color=fg:#c9c7cd,bg:#161617,hl:#f5a191 \
+# --color=fg+:#c1c0d4,bg+:#1b1b1d,hl+:#ffae9f \
+# --color=border:#2a2a2d,header:#90b99f,gutter:#161617 \
+# --color=spinner:#ecaad6,info:#9dc6ac \
+# --color=pointer:#ea83a5,marker:#e29eca,prompt:#e6b99d"
+
+# FZF Evergarden Winter Green theme
 export FZF_DEFAULT_OPTS="--height 50% --layout=default --border \
---color=fg:#c9c7cd,bg:#161617,hl:#f5a191 \
---color=fg+:#c1c0d4,bg+:#1b1b1d,hl+:#ffae9f \
---color=border:#2a2a2d,header:#90b99f,gutter:#161617 \
---color=spinner:#ecaad6,info:#9dc6ac \
---color=pointer:#ea83a5,marker:#e29eca,prompt:#e6b99d"
-export FZF_TMUX_OPTS=" -p90%,70% "
+--color=fg:#f8f9e8,bg:#1e2528,hl:#f57f82 \
+--color=fg+:#f8f9e8,bg+:#374145,hl+:#f5d098 \
+--color=border:#262f33,header:#b2caed,gutter:#1e2528 \
+--color=spinner:#f3c0e5,info:#96b4aa \
+--color=pointer:#cbe3b3,marker:#b3e3ca,prompt:#cbe3b3"
+
+# FZF Everforest Dark Medium theme
+# export FZF_DEFAULT_OPTS="--height 50% --layout=default --border \
+# --color=fg:#d3c6aa,bg:#2d353b,hl:#a7c080 \
+# --color=fg+:#d3c6aa,bg+:#3d484d,hl+:#dbbc7f \
+# --color=border:#4f585e,header:#7fbbb3,gutter:#2d353b \
+# --color=spinner:#d699b6,info:#9da9a0 \
+# --color=pointer:#a7c080,marker:#83c092,prompt:#e69875"
 
 # Setup fzf previews
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range=:500 {}'"
