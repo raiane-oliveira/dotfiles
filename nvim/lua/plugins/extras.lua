@@ -44,7 +44,4 @@ return {
     },
   },
   { "wakatime/vim-wakatime", lazy = false },
-  {
-    "knubie/vim-kitty-navigator",
-  },
 }
