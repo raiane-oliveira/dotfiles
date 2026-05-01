@@ -19,8 +19,10 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 
 - Themes
   - Rosepine BL (borderless) MB (MacOS buttons)
+  - Otis Forest
 - Icons
   - Fluent
+  - Slot Nord Dark Icons
 - Cursor
   - Rosé Pine Dawn
 
