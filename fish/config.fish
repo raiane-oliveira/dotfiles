@@ -149,4 +149,4 @@ end
 fish_add_path /home/raianeeo/.opencode/bin
 fish_add_path $HOME/.local/bin
 
-/home/raianeeo/.local/bin/mise activate fish | source # added by https://mise.run/fish
+mise activate fish | source

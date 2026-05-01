@@ -132,4 +132,10 @@ return {
       popup_border_style = "rounded", -- "NC", "double", "none", "rounded", "shadow", "single" or "solid"
     },
   },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "lewis6991/async.nvim", -- fix async dependency
+    },
+  },
 }
