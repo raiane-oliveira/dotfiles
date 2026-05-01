@@ -47,3 +47,5 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `aza` - beautiful `ls` replacement
 - `mise` - a tool to manage multiple versions of programming languages and more
 - `opencode` - claude code open source alternative
+- `cava` - a Console-based Audio Visualizer
+- `spicetify` - a command-line tool to customize Spotify client
