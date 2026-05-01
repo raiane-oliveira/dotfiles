@@ -1,0 +1,5 @@
+@define-color base      #323d43; /* fundo principal */
+@define-color innerbox  #3c474d; /* fundo secundário */
+@define-color color0    #dad1be; /* texto principal */
+@define-color color1    #d6996b; /* quente/alerta suave */
+@define-color color2    #a7c080; /* verde ativo */
