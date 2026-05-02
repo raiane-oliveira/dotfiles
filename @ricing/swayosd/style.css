@@ -1,0 +1,26 @@
+window {
+    background-color: #2d353b;
+    border-radius: 10px;
+    border: 2px solid #3d484d;
+}
+
+#osd {
+    background-color: #2d353b;
+    color: #d3c6aa;
+    padding: 0px;
+}
+
+#osd:muted {
+    color: #e67e80;
+}
+
+progress {
+    background-color: #a7c080;
+    border-radius: 5px;
+}
+
+/* progress > trough > highlight { */
+/*     background-color: #a7c080; */
+/*     border-radius: 5px; */
+/* } */
+

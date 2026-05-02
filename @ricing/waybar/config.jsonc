@@ -9,7 +9,8 @@
     "pulseaudio",
     "network",
     "battery",
-    "custom/notification"
+    "custom/notification",
+    "custom/power"
   ],
 
   "clock": {
@@ -106,11 +107,13 @@
   "battery": {
     "interval": 60,
     "states": {
-      "warning": 30,
+      "warning": 25,
       "critical": 15
     },
     "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% {icon} ",
     "format-icons": [" ", " ", " ", " ", " "],
+    "format-plugged": "{capacity}% ", // Para quando estiver 100% mas ainda no cabo
     "max-length": 25
   },
 
@@ -133,5 +136,11 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "wlogout",
+    "tooltip": false
   }
 }
