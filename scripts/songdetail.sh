@@ -11,6 +11,11 @@ fi
 title=$(playerctl -p spotify metadata --format "{{title}}")
 artist=$(playerctl -p spotify metadata --format "{{artist}}")
 
+# Não imprime nada se título e artista estiverem vazios
+if [[ -z "$title" && -z "$artist" ]]; then
+  exit 0
+fi
+
 wrap_text() {
   local text="$1"
   local max="$2"

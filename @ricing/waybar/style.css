@@ -8,8 +8,15 @@
 }
 
 window#waybar {
+  background: transparent;
+}
+
+#waybar > box {
   background: @base;
   color: @color0;
+  margin-left: 14px;
+  margin-right: 14px;
+  border-radius: 10px;
 }
 
 tooltip {
