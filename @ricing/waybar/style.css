@@ -22,6 +22,7 @@ tooltip {
 
 #cpu,
 #memory,
+#disk,
 #mpris,
 #custom-notification,
 #network,
@@ -95,11 +96,17 @@ tooltip {
 }
 
 #cpu,
+#disk,
 #memory {
   color: @color0;
 }
 
 #cpu {
+  border-radius: 0;
+  padding-right: 0;
+}
+
+#disk {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   padding-right: 0;

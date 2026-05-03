@@ -2,7 +2,7 @@
   "position": "top",
   "margin-top": 15,
 
-  "modules-left": ["clock", "hyprland/workspaces", "cpu", "memory"],
+  "modules-left": ["clock", "hyprland/workspaces", "disk", "cpu", "memory"],
   // "modules-center": ["tray"],
   "modules-right": [
     "mpris",
@@ -153,5 +153,12 @@
     "format": "⏻",
     "on-click": "wlogout",
     "tooltip": false
+  },
+
+  "disk": {
+    "interval": 30,
+    "path": "/",
+    "format": "🖫 {percentage_used}%",
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_free}% free)"
   }
 }
