@@ -38,6 +38,7 @@ rofi_cmd() {
 
 # Confirmation CMD
 confirm_cmd() {
+  local action_label="$1"
   rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
     -theme-str 'mainbox {children: [ "message", "listview" ];}' \
     -theme-str 'listview {columns: 2; lines: 1;}' \
@@ -45,13 +46,14 @@ confirm_cmd() {
     -theme-str 'textbox {horizontal-align: 0.5;}' \
     -dmenu \
     -p 'Confirmation' \
-    -mesg 'Are you Sure?' \
+    -mesg "Are you sure you want to $action_label?" \
     -theme ${dir}/${theme}.rasi
 }
 
 # Ask for confirmation
 confirm_exit() {
-  echo -e "$yes\n$no" | confirm_cmd
+  local action_label="$1"
+  echo -e "$yes\n$no" | confirm_cmd "$action_label"
 }
 
 # Pass variables to rofi dmenu
@@ -59,9 +61,30 @@ run_rofi() {
   echo -e "$lock\n$suspend\n$logout\n$hibernate\n$reboot\n$shutdown" | rofi_cmd
 }
 
+# Map chosen option to human-readable label
+get_action_label() {
+  local chosen="$1"
+  if [[ "$chosen" == "$shutdown" ]]; then
+    echo "Shutdown"
+  elif [[ "$chosen" == "$reboot" ]]; then
+    echo "Reboot"
+  elif [[ "$chosen" == "$hibernate" ]]; then
+    echo "Hibernate"
+  elif [[ "$chosen" == "$suspend" ]]; then
+    echo "Suspend"
+  elif [[ "$chosen" == "$logout" ]]; then
+    echo "Logout"
+  elif [[ "$chosen" == "$lock" ]]; then
+    echo "Lock"
+  else
+    echo "$chosen"
+  fi
+}
+
 # Execute Command
 run_cmd() {
-  selected="$(confirm_exit)"
+  local action_label="$2"
+  selected="$(confirm_exit "$action_label")"
   if [[ "$selected" == "$yes" ]]; then
     if [[ $1 == '--shutdown' ]]; then
       systemctl poweroff
@@ -93,29 +116,34 @@ run_cmd() {
 
 # Actions
 chosen="$(run_rofi)"
+action_label="$(get_action_label "$chosen")"
+
 case ${chosen} in
 $shutdown)
-  run_cmd --shutdown
+  run_cmd --shutdown "$action_label"
   ;;
 $reboot)
-  run_cmd --reboot
+  run_cmd --reboot "$action_label"
   ;;
 $hibernate)
-  run_cmd --hibernate
+  run_cmd --hibernate "$action_label"
   ;;
 $lock)
-  if [[ -x '/usr/bin/betterlockscreen' ]]; then
-    betterlockscreen -l
-  elif [[ -x '/usr/bin/i3lock' ]]; then
-    i3lock
-  elif [[ -x '/usr/bin/hyprlock' ]]; then
-    loginctl lock-session
+  selected="$(confirm_exit "$action_label")"
+  if [[ "$selected" == "$yes" ]]; then
+    if [[ -x '/usr/bin/betterlockscreen' ]]; then
+      betterlockscreen -l
+    elif [[ -x '/usr/bin/i3lock' ]]; then
+      i3lock
+    elif [[ -x '/usr/bin/hyprlock' ]]; then
+      loginctl lock-session
+    fi
   fi
   ;;
 $suspend)
-  run_cmd --suspend
+  run_cmd --suspend "$action_label"
   ;;
 $logout)
-  run_cmd --logout
+  run_cmd --logout "$action_label"
   ;;
 esac

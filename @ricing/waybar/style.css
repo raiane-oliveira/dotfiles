@@ -124,7 +124,6 @@ tooltip {
 
 #custom-notification {
   color: @color1;
-  margin-left: 10px;
   margin-right: 10px;
   padding-right: 6px;
 }
@@ -195,17 +194,18 @@ tooltip {
     padding-left: 12px;
 }
 
+#battery {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
 #battery.warning:not(.charging) {
     background-color: #ff9a3c;
     color: #FFFFFF;
-    padding-left: 8px;
-    padding-right: 8px;
 }
 
 #battery.critical:not(.charging) {
     background-color: #dc2f2f;
     color: #FFFFFF;
-    padding-left: 8px;
-    padding-right: 8px;
 }
 

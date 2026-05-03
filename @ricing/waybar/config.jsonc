@@ -3,13 +3,15 @@
   "margin-top": 15,
 
   "modules-left": ["clock", "hyprland/workspaces", "cpu", "memory"],
-  "modules-center": ["tray"],
+  // "modules-center": ["tray"],
   "modules-right": [
     "mpris",
     "pulseaudio",
-    "network",
-    "battery",
+    // "network",
+    "bluetooth",
+    "tray",
     "custom/notification",
+    "battery",
     "custom/power"
   ],
 
@@ -65,12 +67,21 @@
     "status-icons": {
       "paused": "▶"
     },
-    "ignored-players": ["chromium", "brave", "firefox"]
+    "ignored-players": ["chromium", "brave", "firefox"],
+    "max-length": 50
   },
 
   "tray": {
-    "icon-size": 21,
+    "icon-size": 26,
     "spacing": 10
+  },
+
+  "bluetooth": {
+    "format": "",
+    // "format-disabled": "  ",
+    "format-connected": " {device_alias}",
+    "on-click": "~/scripts/toggle_bt.sh",
+    "on-click-right": "blueman-manager"
   },
 
   "pulseaudio": {
