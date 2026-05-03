@@ -21,6 +21,7 @@ return {
         typescript = formatJSFiles,
         html = { "prettierd" },
         json = { "prettierd" },
+        jsonc = { "prettierd" },
         python = { "ruff" },
       },
     },
