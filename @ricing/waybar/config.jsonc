@@ -158,7 +158,7 @@
   "disk": {
     "interval": 30,
     "path": "/",
-    "format": "🖫 {percentage_used}%",
+    "format": " {percentage_used}%",
     "tooltip-format": "{used} used out of {total} on {path} ({percentage_free}% free)"
   }
 }
