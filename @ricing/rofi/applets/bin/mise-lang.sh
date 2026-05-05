@@ -26,6 +26,7 @@ declare -A LANG_ICON=(
   [erlang]="󰣓"
   [swift]="󰛥"
   [zig]="󰑴"
+  [lua]="󰢱"
 )
 
 declare -A LANG_LABEL=(
@@ -41,10 +42,28 @@ declare -A LANG_LABEL=(
   [erlang]="Erlang"
   [swift]="Swift"
   [zig]="Zig"
+  [lua]="Lua"
+)
+
+# Mapeamento de linguagem → pacotes pacman/AUR possíveis
+declare -A LANG_PKG=(
+  [node]="nodejs"
+  [python]="python"
+  [ruby]="ruby"
+  [go]="go"
+  [java]="jdk-openjdk java-runtime"
+  [rust]="rust"
+  [bun]="bun-bin"
+  [deno]="deno"
+  [elixir]="elixir"
+  [erlang]="erlang"
+  [swift]="swift-bin"
+  [zig]="zig"
+  [lua]="lua"
 )
 
 # Ordem de exibição no menu principal
-LANG_ORDER=(node python ruby go java rust bun deno elixir erlang swift zig)
+LANG_ORDER=(node python ruby go java lua rust bun deno elixir erlang swift zig)
 
 # ── Layout lateral compartilhado ────────────────────────────────────────────
 
@@ -123,6 +142,28 @@ _confirm() {
     -mesg "${mesg}" \
     -no-custom \
     -i
+}
+
+# ── Verifica se uma linguagem está instalada via pacman/AUR ─────────────────
+
+_pkg_is_installed() {
+  local lang="$1"
+  local pkgs="${LANG_PKG[$lang]}"
+  [[ -z "$pkgs" ]] && return 1
+  for pkg in $pkgs; do
+    pacman -Q "$pkg" &>/dev/null && return 0
+  done
+  return 1
+}
+
+_pkg_version() {
+  local lang="$1"
+  local pkgs="${LANG_PKG[$lang]}"
+  for pkg in $pkgs; do
+    local ver
+    ver=$(pacman -Q "$pkg" 2>/dev/null | awk '{print $2}')
+    [[ -n "$ver" ]] && echo "$ver" && return
+  done
 }
 
 # ── Verifica se uma linguagem está instalada via mise ───────────────────────
@@ -294,17 +335,24 @@ _show_info() {
 # ── Linguagens instaladas — gerenciar ────────────────────────────────────────
 
 run_installed() {
-  # 1. Lista apenas linguagens com ao menos 1 versão instalada
+  # 1. Lista linguagens instaladas via mise e/ou pacman/AUR
   local installed_list=""
   for lang in "${LANG_ORDER[@]}"; do
+    local icon="${LANG_ICON[$lang]}"
+    local label="${LANG_LABEL[$lang]}"
+
     if _mise_is_installed "${lang}"; then
-      local icon="${LANG_ICON[$lang]}"
-      local label="${LANG_LABEL[$lang]}"
       local ver
       ver=$(_mise_global_version "${lang}")
       [[ -n "$ver" ]] &&
         installed_list+="${icon}  ${label}  (${ver})"$'\n' ||
         installed_list+="${icon}  ${label}"$'\n'
+    elif _pkg_is_installed "${lang}"; then
+      local ver
+      ver=$(_pkg_version "${lang}")
+      [[ -n "$ver" ]] &&
+        installed_list+="${icon}  ${label}  (${ver}) [pkg]"$'\n' ||
+        installed_list+="${icon}  ${label}  [pkg]"$'\n'
     fi
   done
 
@@ -328,7 +376,13 @@ run_installed() {
 
   local label="${LANG_LABEL[$lang]}"
 
-  # 2. Lista versões instaladas desta linguagem
+  # 2. Linguagem instalada via pacman/AUR (e não via mise): só mostra info
+  if ! _mise_is_installed "${lang}" && _pkg_is_installed "${lang}"; then
+    _show_pkg_info "${lang}"
+    exit 0
+  fi
+
+  # 3. Lista versões instaladas desta linguagem via mise
   local versions
   versions=$(mise ls --installed --no-header "${lang}" 2>/dev/null | awk '{print $2}')
 
@@ -344,7 +398,7 @@ run_installed() {
 
   [[ -z "$version" ]] && exit 0
 
-  # 3. Ação sobre a versão
+  # 4. Ação sobre a versão
   local action
   action=$(printf "Desinstalar\nVer info\nDefinir global" | rofi \
     -dmenu \
