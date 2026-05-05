@@ -32,6 +32,7 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `fzf` - command-line fuzzy finder
 - `yazi` - a file manager
 - `tmux` - terminal multiplexer
+  - `tpm` - tmux plugin manager
 - `neovim` - text editor
 - `vim` - text editor
 - `lazygit` - a simple terminal UI for git commands
