@@ -16,4 +16,6 @@ theme='style-5'
 ## Run
 rofi \
   -show drun \
+  -modi "drun,filebrowser,window,calc,emoji" \
+  -calc-command "echo -n '{result}' | wl-copy" \
   -theme ${dir}/${theme}.rasi

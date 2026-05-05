@@ -71,7 +71,7 @@ tooltip {
   color: @color0;
   padding: 6px;
   margin-right: 5px;
-  transition: padding 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition: padding 0.2s ease;
 }
 
 #workspaces button.active {
@@ -163,6 +163,11 @@ tooltip {
 #bluetooth {
   color: @color0;
   margin-right: 10px;
+}
+
+#bluetooth.on:not(.pairable) {
+  color: @base;
+  background-color: @color0;
 }
 
 #custom-updates {

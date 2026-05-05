@@ -101,8 +101,6 @@ else
   option_6=" Parsing Error"
 fi
 
-echo "$mesg"
-
 # Rofi CMD
 rofi_cmd() {
   rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
