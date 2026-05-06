@@ -46,7 +46,7 @@ urgent=''
 
 # Rofi CMD
 rofi_cmd() {
-  prompt="Configs"
+  prompt="Hyprland"
   rofi -theme-str "listview {columns: $list_col; lines: $list_row;}" \
     -theme-str 'textbox-prompt-colon {str: "";}' \
     -dmenu \
@@ -109,7 +109,7 @@ $option_6)
   run_cmd --opt6
   ;;
 $option_7)
-  run_cmd --opt6
+  run_cmd --opt7
   ;;
 $option_8)
   run_cmd
