@@ -10,6 +10,24 @@
 /*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
+
+    /* Navegação estilo Vim */
+    kb-row-up: "Up,k,Shift+Tab,Shift+ISO_Left_Tab";
+    kb-row-down: "Down,j";
+    kb-accept-entry: "Control+m,Return,KP_Enter";
+
+    kb-mode-complete: "";
+    /* Remove o Control+h e l da navegação de abas/modos */
+    kb-mode-previous: "Shift+Left";
+    kb-mode-next: "Shift+Right";
+
+    /* Atribui para mover entre as colunas (caractere anterior/próximo) */
+    kb-move-char-back: "Left,h";
+    kb-move-char-forward: "Right,l";
+
+    /* Opcional: Remover caracteres */
+    kb-remove-to-eol: "Control+Shift+e";
+    kb-remove-char-back: "BackSpace";
 }
 
 /*****----- Global Properties -----*****/

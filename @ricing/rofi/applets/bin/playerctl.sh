@@ -121,22 +121,22 @@ run_rofi() {
 # Execute Command
 run_cmd() {
   if [[ "$1" == '--opt1' ]]; then
-    playerctl play-pause && notify-send -u low -t 1000 " $(playerctl metadata title)"
+    playerctl -p spotify play-pause && notify-send -u low -t 1000 " $(playerctl -p spotify metadata title)"
   elif [[ "$1" == '--opt2' ]]; then
-    playerctl stop
+    playerctl -p spotify stop
   elif [[ "$1" == '--opt3' ]]; then
-    playerctl previous && notify-send -u low -t 1000 " $(playerctl metadata title)"
+    playerctl -p spotify previous && notify-send -u low -t 1000 " $(playerctl -p spotify metadata title)"
   elif [[ "$1" == '--opt4' ]]; then
-    playerctl next && notify-send -u low -t 1000 " $(playerctl metadata title)"
+    playerctl -p spotify next && notify-send -u low -t 1000 " $(playerctl -p spotify metadata title)"
   elif [[ "$1" == '--opt5' ]]; then
     # Cicla entre None → Track → Playlist → None
-    case "$(playerctl loop 2>/dev/null)" in
-    None) playerctl loop Track ;;
-    Track) playerctl loop Playlist ;;
-    Playlist) playerctl loop None ;;
+    case "$(playerctl -p spotify loop 2>/dev/null)" in
+    None) playerctl -p spotify loop Track ;;
+    Track) playerctl -p spotify loop Playlist ;;
+    Playlist) playerctl -p spotify loop None ;;
     esac
   elif [[ "$1" == '--opt6' ]]; then
-    playerctl shuffle toggle
+    playerctl -p spotify shuffle toggle
   fi
 }
 
