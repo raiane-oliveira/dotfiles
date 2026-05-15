@@ -15,7 +15,7 @@ return {
     ---@type conform.setupOpts
     opts = {
       formatters_by_ft = {
-        typescriptreact = formatJSFiles,
+        typescriptreact = { "prettierd" },
         javascriptreact = formatJSFiles,
         javascript = formatJSFiles,
         typescript = formatJSFiles,

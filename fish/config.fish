@@ -5,20 +5,6 @@ starship init fish | source
 
 export PATH="$PATH:$HOME/.asdf/installs/nodejs/20.19.0/bin:$HOME/.pulumi/bin:$HOME/go/bin"
 
-# ASDF configuration code
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-set --erase _asdf_shims
-
 # Homebrew
 #eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
@@ -47,6 +33,7 @@ alias opc="open ." # Open current directory
 alias k="kubectl"
 alias ai="~/scripts/ask_ai.sh"
 alias spot="ncspot"
+alias g="git"
 
 # List the 10 most usage memory process
 alias psm="ps aux --sort=-%mem | head"
