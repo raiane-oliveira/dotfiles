@@ -64,27 +64,29 @@ run_rofi() {
 
 # Execute Command
 run_cmd() {
-  configDir="$HOME/.config/hypr"
-  configPath="hyprland.conf"
+  configDir="$HOME/.config/hypr/modules"
 
   if [[ "$1" == '--opt1' ]]; then
-    configPath="modules/autostart.conf"
+    configFile="autostart.conf"
   elif [[ "$1" == '--opt2' ]]; then
-    configPath="modules/binds.conf"
+    configFile="binds.conf"
   elif [[ "$1" == '--opt3' ]]; then
-    configPath="modules/env.conf"
+    configFile="env.conf"
   elif [[ "$1" == '--opt4' ]]; then
-    configPath="modules/input.conf"
+    configFile="input.conf"
   elif [[ "$1" == '--opt5' ]]; then
-    configPath="modules/look-and-feel.conf"
+    configFile="look-and-feel.conf"
   elif [[ "$1" == '--opt6' ]]; then
-    configPath="modules/monitors.conf"
+    configFile="monitors.conf"
   elif [[ "$1" == '--opt7' ]]; then
-    configPath="modules/windows.conf"
+    configFile="windows.conf"
+  else
+    configDir="$HOME/.config/hypr"
+    configFile="hyprland.conf"
   fi
 
-  kitty --title "Editing $configPath" -- bash -c "nvim $configDir/$configPath"
-
+  cd "$configDir" || exit
+  kitty --title "Editing $configFile" -- bash -c "nvim $configDir/$configFile"
 }
 
 # Actions
@@ -112,6 +114,6 @@ $option_7)
   run_cmd --opt7
   ;;
 $option_8)
-  run_cmd
+  run_cmd --opt8
   ;;
 esac

@@ -9,12 +9,15 @@
 source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
 
+# Current directory (to cd back to)
+CMD="$(pwd)"
+
 # Theme Elements
 if [[ ("$theme" == *'type-1'*) || ("$theme" == *'type-3'*) || ("$theme" == *'type-5'*) ]]; then
   list_col='1'
-  list_row='8'
+  list_row='9'
 elif [[ ("$theme" == *'type-2'*) || ("$theme" == *'type-4'*) ]]; then
-  list_col='8'
+  list_col='9'
   list_row='1'
 fi
 
@@ -29,6 +32,7 @@ if [[ "$layout" == 'NO' ]]; then
   option_6="󰍁 Hyprlock"
   option_7=" Neovim"
   option_8="󰈺 Fish"
+  option_9="󰝆 RaianeFlix"
 else
   option_1="󱧶 "
   option_2="󰄛 "
@@ -38,18 +42,13 @@ else
   option_6="󰍁 "
   option_7=" "
   option_8="󰈺 "
+  option_9="󰝆"
 fi
 
-# Options Rofi
-if [[ "$layout" == 'NO' ]]; then
-  rofi_option_1="󱓞 Launcher"
-  rofi_option_2="󰜬 Applets"
-  rofi_option_3="󰐥 Powermenu"
-else
-  rofi_option_1="󰍹 "
-  rofi_option_2="󰖯 "
-  rofi_option_3="󱗼 "
-fi
+# Utility function
+shorten_path() {
+  echo "${1/#$HOME/\~}"
+}
 
 # Rofi CMD
 rofi_cmd() {
@@ -65,68 +64,48 @@ rofi_cmd() {
     -theme "${theme}"
 }
 
-run_config_rofi() {
-  echo -e "$rofi_option_1\n$rofi_option_2\n$rofi_option_3" | rofi_cmd "Rofi" "󰄛"
-}
-
-run_config_rofi_menu() {
-  configDir="$HOME/.config/rofi"
-  configFile="launchers/current"
-  currentTheme="$configDir/launchers/type-6/style-5.rasi"
-
-  local chosen="$(run_config_rofi)"
-  if [[ -z "$chosen" ]]; then
-    exit 0
-  fi
-
-  case ${chosen} in
-  $rofi_option_1)
-    ;;
-  $rofi_option_2)
-    configFile="applets/bin"
-    currentTheme="$configDir/applets/type-5/style-1.rasi"
-    ;;
-  $rofi_option_3)
-    configFile="powermenu/current"
-    currentTheme="$configDir/powermenu/type-5/style-3.rasi"
-    ;;
-  esac
-
-  exec kitty --title "Editing $configDir/$configFile" -- bash -c "nvim $configDir/$configFile $currentTheme"
-}
-
 # Pass variables to rofi dmenu
 run_rofi() {
-  echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8" | rofi_cmd
+  echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5\n$option_6\n$option_7\n$option_8\n$option_9" | rofi_cmd
 }
 
 # Execute Command
 run_cmd() {
   configDir="$HOME/dotfiles"
-  configFile=""
+  configFile="$HOME/dotfiles"
 
   if [[ "$1" == '--opt2' ]]; then
-    run_config_rofi_menu
-    exit 0
+    exec "$HOME/dotfiles/@ricing/rofi/applets/bin/rofi-configs.sh"
   elif [[ "$1" == '--opt3' ]]; then
-    exec "$HOME/dotfiles/@ricing/rofi/applets/bin/configs.sh"
+    exec "$HOME/dotfiles/@ricing/rofi/applets/bin/hypr-configs.sh"
   elif [[ "$1" == '--opt4' ]]; then
-    configFile="@ricing/waybar/config.jsonc"
+    configFile="$configDir/@ricing/waybar/config.jsonc"
     currentTheme="$configDir/@ricing/waybar/style.css"
-    exec kitty --title "Editing $configFile" -- bash -c "nvim $configDir/$configFile $currentTheme"
+    currentDirectory="$configDir/@ricing/waybar"
+
+    cd "$currentDirectory" || exit
+    exec kitty --title "Editing $(shorten_path "$configFile")" -- bash -c "nvim $configFile $currentTheme"
   elif [[ "$1" == '--opt5' ]]; then
-    configFile="@ricing/swaync/config.json"
+    configFile="$configDir/@ricing/swaync/config.json"
     currentTheme="$configDir/@ricing/swaync/style.css"
-    exec kitty --title "Editing $configFile" -- bash -c "nvim $configDir/$configFile $currentTheme"
+    currentDirectory="$configDir/@ricing/swaync"
+
+    cd "$currentDirectory" || exit
+    exec kitty --title "Editing $(shorten_path "$configFile")" -- bash -c "nvim $configFile $currentTheme"
   elif [[ "$1" == '--opt6' ]]; then
-    configFile="@ricing/hyprlock/current.conf"
+    configFile="$configDir/@ricing/hyprlock/current.conf"
   elif [[ "$1" == '--opt7' ]]; then
-    configFile="nvim"
+    configDir="$configDir/nvim"
+    configFile=""
   elif [[ "$1" == '--opt8' ]]; then
-    configFile="fish"
+    configDir="$configDir/fish"
+    configFile="$configDir/config.fish"
+  elif [[ "$1" == '--opt9' ]]; then
+    exec "$HOME/dotfiles/@ricing/rofi/applets/bin/raianeflix-configs.sh"
   fi
 
-  kitty --title "Editing $configFile" -- bash -c "nvim $configDir/$configFile"
+  cd "$configDir" || exit
+  kitty --title "Editing $(shorten_path "$configFile")" -- bash -c "nvim $configFile $currentTheme"
 
 }
 
@@ -157,4 +136,10 @@ $option_7)
 $option_8)
   run_cmd --opt8
   ;;
+$option_9)
+  run_cmd --opt9
+  ;;
 esac
+
+# Go back to where you came from
+cd "$CMD" || exit
