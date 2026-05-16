@@ -127,6 +127,21 @@ end
 
 complete -c cheat.sh -xa '(curl -s cheat.sh/:list)'
 
+# Open Yazi and change to the directory it was opened in
+function y
+    set -l tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+
+    if test -f "$tmp"
+        set -l cwd (cat -- "$tmp")
+        if test -n "$cwd"; and test "$cwd" != "$PWD"
+            cd -- "$cwd"
+        end
+    end
+
+    rm -f -- "$tmp"
+end
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc' ]
     . '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc'

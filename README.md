@@ -48,3 +48,7 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `opencode` - claude code open source alternative
 - `cava` - a Console-based Audio Visualizer
 - `spicetify` - a command-line tool to customize Spotify client
+- `waybar` - a highly customizable Wayland bar for Sway and Wlroots based compositors
+- `swaync` - a notification daemon for Sway and Wlroots based compositors
+- `hyprmod` - a module manager for Hyprland
+- `rofi` - a window switcher, application launcher and dmenu replacement
