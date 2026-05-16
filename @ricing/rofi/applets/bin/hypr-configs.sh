@@ -30,14 +30,14 @@ if [[ "$layout" == 'NO' ]]; then
   option_7="󰖯 Windows"
   option_8="󱗼 General"
 else
-  option_1="󰕮 "
-  option_2="󰌌 "
-  option_3="󰕈 "
-  option_4="󰍽 "
-  option_5="󰏘 "
-  option_6="󰍹 "
-  option_7="󰖯 "
-  option_8="󱗼 "
+  option_1="󰕮"
+  option_2="󰌌"
+  option_3="󰕈"
+  option_4="󰍽"
+  option_5="󰏘"
+  option_6="󰍹"
+  option_7="󰖯"
+  option_8="󱗼"
 fi
 
 # Toggle Actions

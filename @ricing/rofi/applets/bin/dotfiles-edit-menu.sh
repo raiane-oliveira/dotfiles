@@ -34,14 +34,14 @@ if [[ "$layout" == 'NO' ]]; then
   option_8="󰈺 Fish"
   option_9="󰝆 RaianeFlix"
 else
-  option_1="󱧶 "
-  option_2="󰄛 "
-  option_3=" "
-  option_4="󰓫 "
-  option_5="󰂚 "
-  option_6="󰍁 "
-  option_7=" "
-  option_8="󰈺 "
+  option_1="󱧶"
+  option_2="󰄛"
+  option_3=""
+  option_4="󰓫"
+  option_5="󰂚"
+  option_6="󰍁"
+  option_7=""
+  option_8="󰈺"
   option_9="󰝆"
 fi
 

@@ -54,10 +54,12 @@ if [[ "$layout" == 'NO' ]]; then
   option_1=" Iniciar"
   option_2=" Parar"
   option_3=" Informações"
+  option_4="󰝰 Abrir diretório"
 else
-  option_1=" "
-  option_2=" "
-  option_3=" "
+  option_1=""
+  option_2=""
+  option_3=""
+  option_4="󰝰"
 fi
 
 # Rofi CMD
@@ -73,7 +75,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-  echo -e "$option_1\n$option_2\n$option_3" | rofi_cmd
+  echo -e "$option_1\n$option_2\n$option_3\n$option_4" | rofi_cmd
 }
 
 # Show container info in Rofi
@@ -105,9 +107,7 @@ show_info() {
 
   [[ -z "$container_name" ]] && return
 
-  # Abre kitty flutuante via hyprland com logs do container
-  hyprctl dispatch exec \
-    "[float; size 900 550; center] kitty --title 'logs:${container_name}' -- docker logs -f --tail 200 '${container_name}'"
+  kitty --title "logs:${container_name}" -- docker logs -f --tail 200 "${container_name}"
 }
 
 # Execute Command
@@ -127,6 +127,11 @@ run_cmd() {
 
   elif [[ "$1" == '--opt3' ]]; then
     show_info
+
+  elif [[ "$1" == '--opt4' ]]; then
+    if ! erro_msg=$(xdg-open "/home/media/RaianeFlix" 2>&1); then
+      notify-send -u critical -t 5000 "RaianeFlix" "Erro ao abrir diretório: $erro_msg" -i error
+    fi
   fi
 }
 
@@ -141,5 +146,8 @@ $option_2)
   ;;
 $option_3)
   run_cmd --opt3
+  ;;
+$option_4)
+  run_cmd --opt4
   ;;
 esac

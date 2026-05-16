@@ -25,9 +25,9 @@ if [[ "$layout" == 'NO' ]]; then
   option_2="󰍇 qBittorrent"
   option_3="󰹢 Jackett"
 else
-  option_1="󰡨 "
-  option_2="󰍇 "
-  option_3="󰹢 "
+  option_1="󰡨"
+  option_2="󰍇"
+  option_3="󰹢"
 fi
 
 # Toggle Actions

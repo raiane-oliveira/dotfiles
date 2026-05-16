@@ -9,7 +9,7 @@ $battery\
 [username]
 style_user = 'bold os'
 style_root = 'bold os_admin'
-format = '[☯ $user](fg:$style) '
+format = '[󰣇 $user](fg:$style) '
 # format = '[⚣ $user](fg:$style) '
 # format = '[𓃠  $user](fg:$style) '
 # format = '[✌︎︎  $user](fg:$style) '
