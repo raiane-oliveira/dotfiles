@@ -1,0 +1,31 @@
+------------------
+---- MONITORS ----
+------------------
+
+-- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+hl.monitor({
+	output = "HDMI-A-1",
+	mode = "preferred",
+	position = "0x0",
+	scale = "1",
+})
+
+hl.monitor({
+	output = "eDP-1",
+	mode = "preferred",
+	position = "2560x0",
+	scale = "1",
+})
+-- monitor=HDMI-A-1,preferred,0x0,1
+-- monitor=eDP-1,preferred,2560x0,1
+-- monitor=,preferred,auto,1         # Auto-configure remaining monitors
+--
+-- workspace = 1, monitor:HDMI-A-1, persistent:true
+-- workspace = 2, monitor:HDMI-A-1, persistent:true
+-- workspace = 3, monitor:HDMI-A-1, persistent:true
+-- workspace = 4, monitor:HDMI-A-1, persistent:true
+-- workspace = 5, monitor:eDP-1, persistent:true
+-- workspace = 6, monitor:eDP-1, persistent:true
+-- workspace = 7, monitor:eDP-1, persistent:true
+-- workspace = 8, monitor:eDP-1, persistent:true
+--
