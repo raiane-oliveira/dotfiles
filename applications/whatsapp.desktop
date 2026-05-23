@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Whatsapp
+Exec=helium-browser --app=https://web.whatsapp.com/
+Icon=/home/raianeeo/Pictures/icons/whatsapp.png
+Type=Application
+Categories=Message;WebBrowser;
+Terminal=false

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Microsoft Word
+Exec=helium-browser --app=https://word.cloud.microsoft
+Icon=/home/raianeeo/Pictures/icons/microsoft-word.png
+Type=Application
+Categories=Documentation;WebBrowser;
+Terminal=false

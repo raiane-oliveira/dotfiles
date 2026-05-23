@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Claude Web
+Exec=helium-browser --app=https://claude.ai
+Icon=/home/raianeeo/Pictures/icons/claude.webp
+Type=Application
+Categories=AI;WebBrowser;
+Terminal=false

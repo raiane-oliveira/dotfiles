@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Udemy
+Exec=helium-browser --app=https://udemy.com
+Icon=/home/raianeeo/Pictures/icons/udemy.png
+Type=Application
+Categories=Education;WebBrowser;
+Terminal=false

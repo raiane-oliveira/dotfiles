@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=NotebookLM
+Exec=helium-browser --app=https://notebooklm.google.com
+Icon=/home/raianeeo/Pictures/icons/notebooklm_logo.jpg
+Type=Application
+Categories=Notes;AI;WebBrowser;
+Terminal=false

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=LazyDocker
+Exec=kitty --class lazydocker-float -e lazydocker
+Icon=docker
+Type=Application
+Categories=Utility;TerminalEmulator;
+Terminal=false

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Notion
+Exec=helium-browser --app=https://www.notion.so
+Icon=/home/raianeeo/Pictures/icons/Notion_app_logo.png
+Type=Application
+Categories=Education;Notes;WebBrowser;
+Terminal=false

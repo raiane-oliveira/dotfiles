@@ -13,6 +13,7 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `wezterm/colors` -> `~/.config/wezterm/colors`
 - `wezterm/.wezterm.lua` -> `~/.wezterm.lua`
 - `@ricing/*` -> `~/.config/*`
+- `applications/` -> `~/.local/share/`
 
 ## Themes and Icons for GTK3/4
 

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Plex
+Exec=helium-browser --app=http://localhost:32400/web
+Icon=/home/raianeeo/Pictures/icons/plex.webp
+Type=Application
+Categories=Media;WebBrowser;
+Terminal=false
