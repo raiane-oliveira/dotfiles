@@ -54,12 +54,14 @@ if [[ "$layout" == 'NO' ]]; then
   option_1=" Iniciar"
   option_2=" Parar"
   option_3=" Informações"
-  option_4="󰝰 Abrir diretório"
+  option_4=" Armazenamento"
+  option_5="󰝰 Abrir diretório"
 else
   option_1=""
   option_2=""
   option_3=""
-  option_4="󰝰"
+  option_4=""
+  option_5="󰝰"
 fi
 
 # Rofi CMD
@@ -75,7 +77,7 @@ rofi_cmd() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-  echo -e "$option_1\n$option_2\n$option_3\n$option_4" | rofi_cmd
+  echo -e "$option_1\n$option_2\n$option_3\n$option_4\n$option_5" | rofi_cmd
 }
 
 # Show container info in Rofi
@@ -129,6 +131,9 @@ run_cmd() {
     show_info
 
   elif [[ "$1" == '--opt4' ]]; then
+    kitty --title "RaianeFlix Storage" -- bash -c "cd /home/media/RaianeFlix && ncdu ."
+
+  elif [[ "$1" == '--opt5' ]]; then
     if ! erro_msg=$(xdg-open "/home/media/RaianeFlix" 2>&1); then
       notify-send -u critical -t 5000 "RaianeFlix" "Erro ao abrir diretório: $erro_msg" -i error
     fi
@@ -149,5 +154,8 @@ $option_3)
   ;;
 $option_4)
   run_cmd --opt4
+  ;;
+$option_5)
+  run_cmd --opt5
   ;;
 esac

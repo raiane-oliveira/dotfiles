@@ -12,6 +12,7 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `vim/.ideavimrc` -> `~/.ideavimrc`
 - `wezterm/colors` -> `~/.config/wezterm/colors`
 - `wezterm/.wezterm.lua` -> `~/.wezterm.lua`
+- `@ricing/*` -> `~/.config/*`
 
 ## Themes and Icons for GTK3/4
 
@@ -52,3 +53,4 @@ Most of them are in the path `~/.config`. Those that aren't are listed below:
 - `swaync` - a notification daemon for Sway and Wlroots based compositors
 - `hyprmod` - a module manager for Hyprland
 - `rofi` - a window switcher, application launcher and dmenu replacement
+- `ncdu` - a disk usage analyzer with an ncurses interface

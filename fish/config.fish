@@ -22,7 +22,8 @@ bind \cf accept-autosuggestion -M insert
 alias pn=pnpm
 alias lazyd=lazydocker
 alias lg=lazygit
-alias cpc="xclip -sel c"
+# alias cpc="xclip -sel c"
+alias cpc="wl-copy"
 alias ls="eza --color=always --icons=always"
 alias nvclean='NVIM_APPNAME="nvim-clean" nvim'
 alias nv="nvim"

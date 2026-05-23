@@ -1,0 +1,167 @@
+{
+  "position": "top",
+  "margin-top": 8,
+
+  "modules-left": ["clock", "hyprland/workspaces", "disk", "cpu", "memory"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "mpris",
+    "pulseaudio",
+    // "network",
+    "bluetooth",
+    "tray",
+    "custom/notification",
+    "battery",
+    "custom/power"
+  ],
+
+  "clock": {
+    "format": "{:%H:%M 󰃭 %A %d}",
+    "tooltip-format": "{calendar}",
+    "calendar": {
+      "format": {
+        "months": "<span color='#ffffff'><b>{}</b></span>",
+        "days": "<span color='#ffffff'><b>{}</b></span>",
+        "weekdays": "<span color='#83c092'><b>{}</b></span>",
+        "today": "<span color='#e69875'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 40
+  },
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": 4
+    }
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "max-length": 10,
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "hyprctl dispatch exec \"[float;center] kitty -- btop\""
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": " {percentage}%",
+    "tooltip-format": " {used:0.1f}G/{total:0.1f}G",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "hyprctl dispatch exec \"[float;center] kitty -- btop\""
+  },
+
+  "mpris": {
+    "format": "{player_icon} {title} | {artist} - {length}",
+    "format-paused": "{status_icon} <i>{title} | {artist} - {length}</i>",
+    "player-icons": {
+      "default": "󰏤"
+    },
+    "status-icons": {
+      "paused": "▶"
+    },
+    "ignored-players": ["chromium", "brave", "firefox"],
+    "max-length": 50
+  },
+
+  "tray": {
+    "icon-size": 24,
+    "spacing": 10
+  },
+
+  "bluetooth": {
+    "format": "",
+    // "format-disabled": "  ",
+    "format-connected": " {device_alias}",
+    "on-click": "~/scripts/toggle_bt.sh",
+    "on-click-right": "hyprctl dispatch exec \"[float;center] kitty -- bluetui\""
+  },
+
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟 0%",
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume -l 1.3 @DEFAULT_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 5%-",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "󱡏",
+      "hands-free": "󱡏",
+      "headset": "󱡏",
+      "default": ["", ""]
+    }
+  },
+
+  "network": {
+    "interface": "wlo1",
+    "format": "{ifname}",
+    "format-wifi": "{essid}  ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗 ",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗 ",
+    "tooltip-format-wifi": "󰤢  Signal Strength: {signalStrength}%",
+    "tooltip-format-ethernet": "󰊗   Signal Strength:  {signalStrength}%",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor",
+
+    "max-length": 50
+  },
+
+  "battery": {
+    "interval": 5,
+    "states": {
+      "warning": 25,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}%  ",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "format-plugged": "{capacity}% ", // Para quando estiver 100% mas ainda no cabo
+    "max-length": 25
+  },
+
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫 ",
+      "none": "󰂜 ",
+      "dnd-notification": "󰂠 ",
+      "dnd-none": "󰪓 ",
+      "inhibited-notification": "󰂛 ",
+      "inhibited-none": "󰪑 ",
+      "dnd-inhibited-notification": "󰂛 ",
+      "dnd-inhibited-none": "󰪑 "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+
+  "disk": {
+    "interval": 10,
+    "path": "/",
+    "format": " {percentage_used}%",
+    "tooltip-format": "{used} used of {total} on {path} ({percentage_free}% free)",
+    "on-click": "hyprctl dispatch exec \"[float;center] kitty -- btop\""
+  }
+}

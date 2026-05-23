@@ -21,14 +21,18 @@ configuration {
 	window-format:              "{w} · {c} · {t}";
 
     /* Navegação estilo Vim */
-    kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+    kb-row-up: "Up,Control+k";
     kb-row-down: "Down,Control+j";
     kb-accept-entry: "Control+m,Return,KP_Enter";
 
     kb-mode-complete: "";
+
     /* Opcional: Navegação entre modos/histórico */
-    kb-mode-previous: "Shift+Left,Control+h";
-    kb-mode-next: "Shift+Right,Control+l";
+    kb-element-next: "";
+    kb-element-previous: "";
+
+    kb-mode-previous: "Shift+Left,Control+h,Alt+Tab";
+    kb-mode-next: "Shift+Right,Control+l,Tab";
 
     /* Opcional: Remover caracteres */
     kb-remove-to-eol: "Control+Shift+e";
