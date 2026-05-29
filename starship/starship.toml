@@ -9,7 +9,7 @@ $battery\
 [username]
 style_user = 'bold os'
 style_root = 'bold os_admin'
-format = '[󰣇 $user](fg:$style) '
+format = '[󰻀 $user](fg:$style) '
 # format = '[⚣ $user](fg:$style) '
 # format = '[𓃠  $user](fg:$style) '
 # format = '[✌︎︎  $user](fg:$style) '
@@ -39,7 +39,10 @@ style = 'bold red'
 "Programming" = "🖳 "
 "Videos" = " "
 "Desktop" = " "
-"RaianeFlix" = "🎥 "
+"RaianeFlix" = "󰝆"
 
 [gcloud]
+disabled = true
+
+[aws]
 disabled = true

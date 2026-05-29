@@ -27,6 +27,7 @@ alias cpc="wl-copy"
 alias ls="eza --color=always --icons=always"
 alias nvclean='NVIM_APPNAME="nvim-clean" nvim'
 alias nv="nvim"
+alias nvchad='NVIM_APPNAME="nvim-nvchad" nvim'
 alias dcs="docker compose start"
 alias dcp="docker compose stop"
 alias c="clear"
@@ -147,6 +148,10 @@ end
 if [ -f '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc' ]
     . '/home/raianeeo/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.fish.inc'
 end
+
+# function _move_prompt_to_bottom --on-event fish_prompt
+#     printf "\033[999;1H"
+# end
 
 # opencode
 fish_add_path /home/raianeeo/.opencode/bin

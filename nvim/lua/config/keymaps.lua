@@ -21,3 +21,8 @@ map("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 map("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
+map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "New buffer" })
+
+map("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+map("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
