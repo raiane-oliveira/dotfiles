@@ -26,3 +26,12 @@ map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "New buffer" })
 
 map("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+
+-- Remove os keymaps padrão do LazyVim pra Ctrl+h/j/k/l abrirem espaço
+-- pro vim-herdr-navigation
+del("n", "<C-h>")
+del("n", "<C-j>")
+del("n", "<C-k>")
+del("n", "<C-l>")
+
+dofile(vim.fn.expand("~/src/vim-herdr-navigation/editor/nvim.lua"))

@@ -1,0 +1,240 @@
+onboarding = false
+# ============================================================================
+# Doc de referência: https://herdr.dev/docs/configuration/
+# Doc de todas as chaves: https://herdr.dev/docs/config-reference/
+#
+# Para aplicar sem reiniciar: `herdr server reload-config`
+# (ou abra o menu global do herdr e escolha "reload config")
+#
+# Cada bloco abaixo tem um comentário dizendo o que faz e o que era no tmux.
+# Para DESABILITAR algo: comente a linha (#) ou apague — o herdr cai no default.
+# ============================================================================
+
+[theme]
+# Seu tmux usava o esquema "Everforest Dark Medium".
+# O herdr não tem "everforest" nativo, então uso um tema base + overrides
+# de cor em [theme.custom] logo abaixo pra chegar o mais perto possível.
+# Troque para "terminal" se preferir que o herdr siga a paleta ANSI do seu
+# terminal em vez de cores fixas.
+name = "rose-pine"
+
+# Descomente se seu terminal alterna claro/escuro e você quiser o herdr
+# acompanhando automaticamente (desligado por padrão):
+# auto_switch = true
+# light_name = "catppuccin-latte"
+# dark_name = "catppuccin"
+
+auto_switch = false
+[theme.custom]
+# Cores extraídas direto do seu tmux.conf (Everforest Dark Medium).
+# Comente qualquer linha individual para voltar à cor default do tema acima.
+accent      = "#a7c080" # everforest_green (accent = seu status-left ativo)
+panel_bg    = "#2d353b" # everforest_bg0
+surface0    = "#343f44" # everforest_bg1
+surface1    = "#3d484d" # everforest_bg2
+surface_dim = "#232a2e" # everforest_bg_dim
+overlay0    = "#7a8478" # everforest_grey0
+overlay1    = "#859289" # everforest_grey1
+text        = "#d3c6aa" # everforest_fg
+subtext0    = "#9da9a0" # everforest_grey2
+mauve       = "#d699b6" # everforest_purple
+green       = "#a7c080" # everforest_green
+yellow      = "#dbbc7f" # everforest_yellow
+red         = "#e67e80" # everforest_red
+blue        = "#7fbbb3" # everforest_blue
+teal        = "#83c092" # everforest_aqua
+peach       = "#e69875" # everforest_orange
+
+[terminal]
+# No seu tmux.conf: `set -g default-terminal "screen-256color"` +
+# `set -ag terminal-overrides ",xterm-256color:RGB"` (truecolor).
+# O herdr detecta isso via terminal hospedeiro, não precisa configurar aqui.
+# Se quiser que os panes novos abram sempre com um shell específico
+# (equivalente a rodar algo fixo em cada pane novo), descomente e ajuste:
+# default_shell = "zsh"
+
+# shell_mode = "auto"   # "auto" | "login" | "non_login"
+# new_cwd = "follow"    # "follow" (herda o pane atual) | "home" | "current" | "~/Projects"
+
+[update]
+# Nada equivalente no tmux.conf. Deixe como está pra receber avisos de
+# atualização do herdr em segundo plano.
+version_check = true
+manifest_check = true
+
+[keys]
+# ----------------------------------------------------------------------
+# PREFIXO
+# Seu tmux: `set -g prefix C-a` (trocou de C-b pra C-a).
+# ----------------------------------------------------------------------
+prefix = "ctrl+a"
+
+# ----------------------------------------------------------------------
+# SPLITS
+# tmux: `unbind %` + `bind | split-window -h`  → split lado a lado, tecla "|"
+#       `unbind '"'` + `bind v split-window -v` → split empilhado, tecla "v"
+# No herdr, "split_vertical" = lado a lado (equivale ao -h do tmux) e
+# "split_horizontal" = empilhado (equivale ao -v do tmux) — nomenclatura
+# invertida em relação ao tmux, então prestei atenção nisso ao mapear:
+# ----------------------------------------------------------------------
+split_vertical = "prefix+|"      # lado a lado, como seu bind | split-window -h
+split_horizontal = "prefix+v"    # empilhado, como seu bind v split-window -v
+
+# ----------------------------------------------------------------------
+# RELOAD DE CONFIG
+# tmux: `bind r source-file ~/.tmux.conf` (recarrega config na tecla r)
+# Por padrão no herdr, reload_config é prefix+shift+r e prefix+r é
+# resize_mode. Troquei os dois pra manter seu hábito de "prefix+r = reload":
+# ----------------------------------------------------------------------
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"   # entra no modo de redimensionar panes
+# Dentro do resize_mode o herdr usa as próprias teclas de navegação
+# (h/j/k/l) pra redimensionar — não dá pra definir "6 células por tecla"
+# como no seu `resize-pane -D 6` etc., o herdr redimensiona em passos fixos.
+
+# ----------------------------------------------------------------------
+# ZOOM DE PANE
+# tmux: `bind m resize-pane -Z` (zoom/fullscreen no pane com a tecla m)
+# ----------------------------------------------------------------------
+zoom = "prefix+m"
+
+# ----------------------------------------------------------------------
+# COPY MODE (equivalente ao vi copy-mode do tmux)
+# tmux: `set-window-option -g mode-keys vi` + binds de v (seleção) e y (copiar)
+# O herdr já usa navegação estilo vi dentro do copy mode por padrão, só
+# precisa da tecla de entrada (v/y ficam embutidos no próprio modo):
+# ----------------------------------------------------------------------
+copy_mode = "prefix+["
+
+# ----------------------------------------------------------------------
+# NAVEGAÇÃO ENTRE PANES (equivalente ao vim-tmux-navigator com Ctrl-hjkl)
+# Já são os defaults do herdr, deixei explícito pra você ver e poder mudar:
+# ----------------------------------------------------------------------
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# ----------------------------------------------------------------------
+# NOVA SESSÃO NOMEADA
+# tmux: `bind-key C-n command-prompt -p "New session name:" "new-session -s '%%'"`
+# No herdr o equivalente é "new_workspace". Troquei a tecla pra ctrl+n,
+# como no seu tmux, e habilitei o prompt de nome em [ui] abaixo.
+# ----------------------------------------------------------------------
+new_workspace = "prefix+ctrl+n"
+
+# Desative (comente) a linha acima se preferir o default do herdr
+# (prefix+shift+n).
+
+toggle_sidebar = "prefix+e"
+edit_scrollback = "prefix+b"
+rename_tab = "prefix+,"
+detach = "prefix+d"
+
+[[keys.command]]
+# ----------------------------------------------------------------------
+# POPUP DO OPENCODE
+# tmux: `bind C-o popup -E -d "#{pane_current_path}" -w 90% -h 90% "opencode"`
+# Abre o opencode num popup, no diretório do pane atual, ocupando 90%x90%.
+# ----------------------------------------------------------------------
+key = "prefix+ctrl+o"
+type = "popup"
+command = "opencode"
+description = "abrir opencode (popup)"
+width = "90%"
+height = "90%"
+
+# Se não usa mais opencode, é só apagar (ou comentar) o bloco [[keys.command]]
+# inteiro acima.
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
+
+[ui]
+# tmux: `set -g mouse on` → equivalente já é o default do herdr:
+mouse_capture = true
+copy_on_select = true
+
+# tmux: `bind-key C-n command-prompt -p "New session name:" ...` pedia o
+# nome da sessão antes de criar. Habilitando isso o herdr faz o mesmo
+# quando você criar um workspace novo:
+prompt_new_workspace_name = true
+
+# Cor de destaque da UI (bordas, seleção, navegação) — usando o verde
+# do everforest, mesma cor do seu status-left ativo no tmux:
+accent = "#a7c080"
+
+# Sem equivalente direto no tmux (status-position bottom era do tmux
+# status bar, o herdr tem sua própria sidebar). Ajuste se quiser:
+sidebar_start_collapsed = true
+sidebar_collapsed_mode = "hidden"   # "compact" | "hidden"
+
+pane_gaps = false
+pane_borders = true
+
+agent_panel_sort = "spaces"
+
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+# Notificações quando um agente termina ou precisa de input.
+# Sem equivalente no seu tmux.conf — fica como default (desligado).
+# Descomente pra ativar notificação in-app:
+# delivery = "herdr"   # "off" | "herdr" | "terminal" | "system"
+# delay_seconds = 1
+
+[ui.toast.herdr]
+# position = "bottom-right"
+
+[ui.toast.clipboard]
+# Popup de "copiado pro clipboard" ao selecionar com o mouse.
+# enabled = true
+# position = "bottom-center"
+
+[ui.sound]
+# Sons ao agente mudar de estado. Nenhum equivalente no tmux.
+# enabled = true
+
+[session]
+# Retomar sessões de agentes (Claude Code etc.) após restart do servidor.
+resume_agents_on_restore = true
+
+[remote]
+# Gerencia SSH keepalive/reuso de conexão automaticamente no `herdr --remote`.
+manage_ssh_config = true
+
+[experimental]
+# tmux tinha plugins comentados (tmux-resurrect/continuum) pra persistir
+# sessões — se você quer que o herdr guarde o conteúdo da tela dos panes
+# entre reinícios, habilite isto (ver trade-off de segurança na doc de
+# "Session state and restore" antes de ligar):
+pane_history = false
+
+# Gráficos Kitty (experimental, desligado por padrão):
+# kitty_graphics = true
+
+[advanced]
+# Limite de scrollback por pane (em bytes). Sem equivalente direto no
+# tmux.conf enviado. Default do herdr:
+# scrollback_limit_bytes = 10000000
