@@ -85,7 +85,7 @@ hl.config({
 			gradients = true,
 
 			col = {
-				active = 0xff323d43,
+				active = "0xff323d43",
 				inactive = "rgba(595959aa)",
 			},
 
