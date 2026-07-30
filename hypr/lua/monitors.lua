@@ -16,16 +16,18 @@ hl.monitor({
 	position = "2560x0",
 	scale = "1",
 })
--- monitor=HDMI-A-1,preferred,0x0,1
--- monitor=eDP-1,preferred,2560x0,1
--- monitor=,preferred,auto,1         # Auto-configure remaining monitors
---
--- workspace = 1, monitor:HDMI-A-1, persistent:true
--- workspace = 2, monitor:HDMI-A-1, persistent:true
--- workspace = 3, monitor:HDMI-A-1, persistent:true
--- workspace = 4, monitor:HDMI-A-1, persistent:true
--- workspace = 5, monitor:eDP-1, persistent:true
--- workspace = 6, monitor:eDP-1, persistent:true
--- workspace = 7, monitor:eDP-1, persistent:true
--- workspace = 8, monitor:eDP-1, persistent:true
---
+hl.monitor({
+	output = "",
+	mode = "preferred",
+	position = "auto",
+	scale = "auto",
+})
+
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "5", monitor = "eDP-1", persistent = true })
+hl.workspace_rule({ workspace = "6", monitor = "eDP-1", persistent = true })
+hl.workspace_rule({ workspace = "7", monitor = "eDP-1", persistent = true })
+hl.workspace_rule({ workspace = "8", monitor = "eDP-1", persistent = true })

@@ -30,7 +30,7 @@ hl.config({
 
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1.0,
-		inactive_opacity = 0.95,
+		inactive_opacity = 0.90,
 
 		shadow = {
 			enabled = true,
@@ -73,12 +73,11 @@ hl.config({
 		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
 	},
-
 	group = {
 		col = {
-			active_border = "rgba(cbe3b3ee)",
-			-- active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-			inactive_border = "rgba(595959aa)",
+			border_active = "rgba(cbe3b3ee)", -- antes: active_border
+			-- border_active   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
+			border_inactive = "rgba(595959aa)", -- antes: inactive_border
 		},
 
 		groupbar = {
@@ -92,7 +91,7 @@ hl.config({
 
 			rounding = 12,
 
-			blur = true,
+			blur = false,
 
 			indicator_gap = 4,
 			indicator_height = 0,
@@ -107,14 +106,14 @@ hl.config({
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
-hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 } }, { 0.36, 1 } })
-hl.curve("linear", { type = "bezier", points = { { 0, 0 } }, { 1, 1 } })
-hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 } }, { 0.75, 1 } })
-hl.curve("quick", { type = "bezier", points = { { 0.15, 0 } }, { 0.1, 1 } })
+hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36, 1 } } })
+hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
+hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
+hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
 hl.curve("wind", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 hl.curve("winIn", { type = "bezier", points = { { 0.1, 1.1 }, { 0.1, 1.1 } } })
-hl.curve("winOut", { type = "bezier", points = { { 0.3, -0.3 } }, { 0, 1 } })
-hl.curve("liner", { type = "bezier", points = { { 1, 1 } }, { 1, 1 } })
+hl.curve("winOut", { type = "bezier", points = { { 0.3, -0.3 }, { 0, 1 } } })
+hl.curve("liner", { type = "bezier", points = { { 1, 1 }, { 1, 1 } } })
 
 -- Default springs
 hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
@@ -143,5 +142,16 @@ hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.49, bezier = "winO
 hl.animation({ leaf = "windowsMove", enabled = true, speed = 5, bezier = "wind", style = "slide" })
 hl.animation({ leaf = "border", enabled = true, speed = 1, bezier = "linear" })
 hl.animation({ leaf = "borderangle", enabled = true, speed = 30, bezier = "linear", style = "once" })
-hl.animation({ leaf = "fade", enabled = true, speed = 10, bezier = "default" })
+-- hl.animation({ leaf = "fade", enabled = true, speed = 10, bezier = "default" })
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "quick" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 6, bezier = "wind" })
+
+-- Overrides from hyprland-gui.conf (HyprMod)
+hl.config({
+	decoration = {
+		inactive_opacity = 0.98,
+		blur = {
+			enabled = false,
+		},
+	},
+})

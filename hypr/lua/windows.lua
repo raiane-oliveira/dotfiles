@@ -42,3 +42,4 @@ hl.window_rule({ match = { class = "nm-connection-editor" }, float = true, size 
 hl.window_rule({ match = { class = "blueman-manager" }, float = true, size = { 822, 682 } })
 hl.window_rule({ match = { class = "^(org.pulseaudio.pavucontrol)$" }, float = true, size = { 822, 682 } })
 hl.window_rule({ match = { class = "^(com.gabm.satty)$" }, float = true, size = { 822, 682 } })
+hl.window_rule({ match = { class = "^(lazydocker-float)$" }, float = true })

@@ -12,7 +12,7 @@ local menu = "~/.config/rofi/launchers/current || pkill rofi"
 local clipboard = "clipse-gui"
 local powermenu = "~/.config/rofi/powermenu/current || pkill rofi"
 local browser = "brave"
-local screenshot = "quickshell -c HyprQuickFrame -n"
+local screenshot = "hyprshot -m region --freeze --raw | swappy -f -"
 -- # $screenshot = grim -g "$(slurp)" - | swappy -f -
 local playerctl = "~/.config/rofi/applets/bin/playerctl.sh || pkill rofi"
 local pkgmanager = "~/.config/rofi/applets/bin/pkgmanager.sh menu || pkill rofi"
@@ -31,7 +31,7 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(
 	mainMod .. " + ALT + M",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit")
+	hl.dsp.exec_cmd('command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch "hl.dsp.exit()"')
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
@@ -45,12 +45,15 @@ hl.bind(mainMod .. " + 0", hl.dsp.exec_cmd("hyprpicker --autocopy -n"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("brave --app=https://www.notion.so"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("brave --app=https://www.claude.ai"))
 hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
+hl.bind(mainMod .. " + CTRL + Space", hl.dsp.exec_cmd("handy --toggle-transcription --start-hidden"))
+hl.bind(mainMod .. " + CTRL + SHIFT + Space", hl.dsp.exec_cmd("pkill -9 handy"))
 
 -- Opens HyprQuickFrame - Decided on-the-fly whether to Edit, Save, or Copy
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshot))
 hl.bind("PRINT", hl.dsp.exec_cmd(screenshot))
 
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("wayscriber --daemon-toggle"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("~/scripts/toggle_wayscriber.sh"))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("pkill -9 wayscriber"))
 
 -- Rofi
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
@@ -62,6 +65,8 @@ hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(miselang))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("[float] " .. editconfigs))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(setwallpaper))
 hl.bind(mainMod .. " + K", hl.dsp.exec_cmd("[float] " .. raianeflix))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("~/.config/rofi/applets/bin/change-waybar.sh || pkill rofi"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 
 -- Move focus with mainMod + hjkl (vim style)
 hl.bind(mainMod .. " + CTRL + l", hl.dsp.focus({ direction = "right" }))
@@ -104,12 +109,12 @@ hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "d" }))
 
 -- Grupos de janelas
-hl.bind(mainMod .. " + TAB", hl.dsp.group.cycle({ direction = "f" }))
-hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.group.cycle({ direction = "b" }))
+hl.bind(mainMod .. " + TAB", hl.dsp.group.next())
+hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.group.prev())
 
 hl.bind("ALT + SHIFT + l", hl.dsp.group.move_window({ direction = "f" }))
 hl.bind("ALT + SHIFT + h", hl.dsp.group.move_window({ direction = "b" }))
-hl.bind("ALT + p", hl.dsp.window.move_out_of_group({ direction = "u" }))
+hl.bind("ALT + k", hl.dsp.window.move({ out_of_group = "up" }))
 
 -- Switch workspaces with mainMod + [0-9]
 for i = 1, 9 do

@@ -3,6 +3,8 @@
 -----------------
 
 hl.on("hyprland.start", function()
+	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+	hl.exec_cmd('hyprctl setcursor "everforest-cursors-light" 30')
 	hl.exec_cmd("awww-daemon")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("swaync")
@@ -12,6 +14,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
 	hl.exec_cmd("nm-applet --indicator")
 	hl.exec_cmd("rclone mount gdrive: ~/GoogleDrive --vfs-cache-mode writes")
+	hl.exec_cmd("pika-backup --gapplication-service")
 
 	hl.exec_cmd("hypridle")
 

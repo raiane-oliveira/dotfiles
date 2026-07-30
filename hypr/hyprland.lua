@@ -1,0 +1,7 @@
+require("lua.monitors")
+require("lua.env")
+require("lua.autostart")
+require("lua.input")
+require("lua.windows")
+require("lua.look-and-feel")
+require("lua.binds")
