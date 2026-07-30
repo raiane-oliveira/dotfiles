@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=YouTube
+Exec=helium-browser --app=https://www.youtube.com
+Icon=/home/raianeeo/Pictures/icons/youtube.webp
+Type=Application
+Categories=Video;WebBrowser;
+Terminal=false

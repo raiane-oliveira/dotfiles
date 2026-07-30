@@ -50,7 +50,7 @@ customCommands:
         key: "Msg"
         command: |
           bash -c '
-          opencode run --model github-copilot/gpt-5-mini "Generate a single concise git commit message for the staged diff below.
+          opencode run --model github-copilot/auto "Generate a single concise git commit message for the staged diff below.
 
           $(git diff --cached)
 

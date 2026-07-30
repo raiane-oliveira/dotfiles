@@ -177,36 +177,36 @@ main() {
 
   while [[ $# -gt 0 ]]; do
     case $1 in
-      --no-save)
-        SAVE_OUTPUT=false
-        shift
-        ;;
-      --context)
-        if [[ -n "$2" && ! "$2" =~ ^-- ]]; then
-          CONTEXT_FILE="$2"
-          shift 2
-        else
-          echo -e "${RED}❌ Erro: --context requer um arquivo${NC}"
-          exit 1
-        fi
-        ;;
-      --session)
-        if [[ -n "$2" && ! "$2" =~ ^-- ]]; then
-          SESSION_ID="$2"
-          shift 2
-        else
-          echo -e "${RED}❌ Erro: --session requer um ID de sessão${NC}"
-          exit 1
-        fi
-        ;;
-      --continue)
-        CONTINUE_SESSION=true
-        shift
-        ;;
-      *)
-        opencode_args+=("$1")
-        shift
-        ;;
+    --no-save)
+      SAVE_OUTPUT=false
+      shift
+      ;;
+    --context)
+      if [[ -n "$2" && ! "$2" =~ ^-- ]]; then
+        CONTEXT_FILE="$2"
+        shift 2
+      else
+        echo -e "${RED}❌ Erro: --context requer um arquivo${NC}"
+        exit 1
+      fi
+      ;;
+    --session)
+      if [[ -n "$2" && ! "$2" =~ ^-- ]]; then
+        SESSION_ID="$2"
+        shift 2
+      else
+        echo -e "${RED}❌ Erro: --session requer um ID de sessão${NC}"
+        exit 1
+      fi
+      ;;
+    --continue)
+      CONTINUE_SESSION=true
+      shift
+      ;;
+    *)
+      opencode_args+=("$1")
+      shift
+      ;;
     esac
   done
 
