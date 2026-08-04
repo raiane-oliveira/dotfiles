@@ -34,6 +34,7 @@ hl.window_rule({
 hl.window_rule({ match = { initial_class = "^(spotify)$" }, workspace = 3 })
 
 -- Floating windows apps
+hl.window_rule({ match = { class = "^(floating_kitty)$" }, float = true, size = { 622, 652 } })
 hl.window_rule({ match = { class = "clipse" }, float = true, size = { 622, 652 } })
 hl.window_rule({ match = { class = "clipse-gui" }, float = true, size = { 622, 652 } })
 hl.window_rule({ match = { class = "nwg-look" }, float = true, size = { 822, 682 } })

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "lsp": false,
+  "permission": {
+    "skill": {
+      "smart-dispatch": "deny",
+      "*": "allow",
+    },
+  },
+}

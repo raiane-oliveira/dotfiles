@@ -10,7 +10,8 @@ hl.config({
 		border_size = 1,
 
 		col = {
-			active_border = "rgba(cbe3b3ee)",
+			-- active_border = "rgba(cbe3b3ee)",
+			active_border = "#e0b878",
 			-- active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
 			inactive_border = "rgba(595959aa)",
 		},
@@ -21,7 +22,7 @@ hl.config({
 		-- Please see https://wiki.hypr.land/Configuring/Tearing/ before you turn this on
 		allow_tearing = false,
 
-		layout = "dwindle",
+		layout = "dwindle", -- scrolling, dwindle, master, monocle
 	},
 
 	decoration = {

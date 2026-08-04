@@ -64,25 +64,25 @@ run_rofi() {
 
 # Execute Command
 run_cmd() {
-  configDir="$HOME/.config/hypr/modules"
+  configDir="$HOME/.config/hypr/lua"
 
   if [[ "$1" == '--opt1' ]]; then
-    configFile="autostart.conf"
+    configFile="autostart.lua"
   elif [[ "$1" == '--opt2' ]]; then
-    configFile="binds.conf"
+    configFile="binds.lua"
   elif [[ "$1" == '--opt3' ]]; then
-    configFile="env.conf"
+    configFile="env.lua"
   elif [[ "$1" == '--opt4' ]]; then
-    configFile="input.conf"
+    configFile="input.lua"
   elif [[ "$1" == '--opt5' ]]; then
-    configFile="look-and-feel.conf"
+    configFile="look-and-feel.lua"
   elif [[ "$1" == '--opt6' ]]; then
-    configFile="monitors.conf"
+    configFile="monitors.lua"
   elif [[ "$1" == '--opt7' ]]; then
-    configFile="windows.conf"
+    configFile="windows.lua"
   else
     configDir="$HOME/.config/hypr"
-    configFile="hyprland.conf"
+    configFile="hyprland.lua"
   fi
 
   cd "$configDir" || exit
