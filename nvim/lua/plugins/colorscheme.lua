@@ -112,9 +112,14 @@ return {
     end,
   },
   {
+    "savq/melange-nvim",
+    lazy = false,
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "evergarden",
+      -- colorscheme = "evergarden",
+      colorscheme = "melange",
     },
   },
 }
