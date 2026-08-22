@@ -201,7 +201,7 @@ show_agent_labels_on_pane_borders = true
 # Notificações quando um agente termina ou precisa de input.
 # Sem equivalente no seu tmux.conf — fica como default (desligado).
 # Descomente pra ativar notificação in-app:
-delivery = "herdr"   # "off" | "herdr" | "terminal" | "system"
+delivery = "system"
 # delay_seconds = 1
 
 [ui.toast.herdr]
